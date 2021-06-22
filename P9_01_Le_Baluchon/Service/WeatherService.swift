@@ -1,0 +1,53 @@
+//
+//  weather.swift
+//  P9_01_Le_Baluchon
+//
+//  Created by angelique fourny on 14/06/2021.
+//
+
+import Foundation
+
+class WeatherService {
+    
+    static let shared = WeatherService()
+    
+    enum APIError: Error {
+        case server
+        case decoding
+        case url
+    }
+    
+    func getWeather(city: String, completion: @escaping (Result<[WeatherInfo], APIError>) -> Void) {
+        
+        let urlWeather = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=df50781f0d5dda3bc246e09ed6adaa23&units=metric&lang=fr")
+        
+        guard let url = urlWeather else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        let session = URLSession(configuration: .default)
+        
+        let task = session.dataTask(with: request) { (data, response, error) in
+            guard error ==  nil else { completion(.failure(.server))
+                print("erreur")
+                return
+            }
+            do {
+                guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    completion(.failure(.decoding))
+                    print("pas de data")
+                    return
+                }
+                
+                guard let responseJSON = try? JSONDecoder().decode([WeatherInfo].self, from: data) else {
+                    completion(.failure(.url))
+                    return
+                }
+                completion(.success(responseJSON))
+            }
+        }
+        task.resume()
+    }
+}
+
+
