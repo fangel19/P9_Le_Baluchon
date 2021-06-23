@@ -7,8 +7,22 @@
 
 import UIKit
 
-class CashWelcomeViewController: UIViewController {
+class CashWelcomeViewController: UIViewController,UITextFieldDelegate {
+    
 
+    @IBOutlet weak var firstCash: UILabel!
+    @IBOutlet weak var firstAmountCash: UITextField!
+    @IBOutlet weak var firstCashPickerView: UIPickerView!
+    
+    
+    @IBOutlet weak var secondCash: UILabel!
+    @IBOutlet weak var secondAmountCash: UITextField!
+    @IBOutlet weak var secondCashPickerView: UIPickerView!
+    
+    
+    @IBAction func changeCash(_ sender: Any) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

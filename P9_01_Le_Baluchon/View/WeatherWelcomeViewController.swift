@@ -16,13 +16,13 @@ class WeatherWelcomeViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var cityText: UITextField!
     
-    private var usersArray: [WeatherInfo]? {
-        didSet {
-            DispatchQueue.main.async {
-                self.cityText.reloadInputViews()
-            }
-        }
-    }
+//    private var usersArray: [WeatherInfo]? {
+//        didSet {
+//            DispatchQueue.main.async {
+//                self.cityText.reloadInputViews()
+//            }
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,16 +35,19 @@ class WeatherWelcomeViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func updateWeather() {
-        WeatherService.shared.getWeather(city: cityText.text ?? "") { result in
+        WeatherService.shared.getWeather(city: cityText.text ?? "") { result in DispatchQueue.main.async {
             switch result {
             case .success(let weather):
-                self.usersArray = weather
+                self.viewWeather(info: weather[0])
+                
                 //                self.viewWeather(info: weather[0])
                 print("success")
             case .failure(let error):
                 print(error.localizedDescription)
+//                self.alertMessage(with: "error")
             }
         }
+    }
     }
     //    WeatherInfo.init(weather: [WeatherElement.init(description: "nuageux", Icon: "04d")], main: Main.init(temp: 24.29), name: "Paris")
     //    //        viewWeather()
