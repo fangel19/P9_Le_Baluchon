@@ -14,10 +14,9 @@ class WeatherService {
     enum APIError: Error {
         case server
         case decoding
-        case url
     }
     
-    func getWeather(city: String, completion: @escaping (Result<[WeatherInfo], APIError>) -> Void) {
+    func getWeather(city: String, completion: @escaping (Result<WeatherInfo, APIError>) -> Void) {
         
         let urlWeather = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=df50781f0d5dda3bc246e09ed6adaa23&units=metric&lang=fr")
         
@@ -34,13 +33,13 @@ class WeatherService {
             }
             do {
                 guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    completion(.failure(.decoding))
+                    completion(.failure(.server))
                     print("pas de data")
                     return
                 }
                 
-                guard let responseJSON = try? JSONDecoder().decode([WeatherInfo].self, from: data) else {
-                    completion(.failure(.url))
+                guard let responseJSON = try? JSONDecoder().decode(WeatherInfo.self, from: data) else {
+                    completion(.failure(.decoding))
                     return
                 }
                 completion(.success(responseJSON))

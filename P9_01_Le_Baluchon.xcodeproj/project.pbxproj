@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		240A6FC12641841700BA9DD5 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240A6FC02641841700BA9DD5 /* WelcomeViewController.swift */; };
+		2415201A268609F400CDFBF4 /* TranslateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24152019268609F300CDFBF4 /* TranslateService.swift */; };
+		2415201C26860A1A00CDFBF4 /* CashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2415201B26860A1A00CDFBF4 /* CashService.swift */; };
+		2415201E26860A5500CDFBF4 /* UserTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2415201D26860A5500CDFBF4 /* UserTranslate.swift */; };
+		2415202026860A6100CDFBF4 /* UserCash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2415201F26860A6100CDFBF4 /* UserCash.swift */; };
 		2416950B267A40770086ABAC /* UserWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416950A267A40770086ABAC /* UserWeather.swift */; };
 		241826052672457500FA39EE /* CashWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241826042672457500FA39EE /* CashWelcomeViewController.swift */; };
 		241826072672463F00FA39EE /* TranslateWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241826062672463F00FA39EE /* TranslateWelcomeViewController.swift */; };
@@ -41,6 +45,10 @@
 
 /* Begin PBXFileReference section */
 		240A6FC02641841700BA9DD5 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = P9_01_Le_Baluchon/View/WelcomeViewController.swift; sourceTree = SOURCE_ROOT; };
+		24152019268609F300CDFBF4 /* TranslateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateService.swift; sourceTree = "<group>"; };
+		2415201B26860A1A00CDFBF4 /* CashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashService.swift; sourceTree = "<group>"; };
+		2415201D26860A5500CDFBF4 /* UserTranslate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTranslate.swift; sourceTree = "<group>"; };
+		2415201F26860A6100CDFBF4 /* UserCash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCash.swift; sourceTree = "<group>"; };
 		2416950A267A40770086ABAC /* UserWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWeather.swift; sourceTree = "<group>"; };
 		241826042672457500FA39EE /* CashWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashWelcomeViewController.swift; sourceTree = "<group>"; };
 		241826062672463F00FA39EE /* TranslateWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TranslateWelcomeViewController.swift; path = P9_01_Le_Baluchon/View/TranslateWelcomeViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -90,6 +98,8 @@
 			isa = PBXGroup;
 			children = (
 				248995272677B9380044123D /* WeatherService.swift */,
+				24152019268609F300CDFBF4 /* TranslateService.swift */,
+				2415201B26860A1A00CDFBF4 /* CashService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -169,6 +179,8 @@
 			isa = PBXGroup;
 			children = (
 				2416950A267A40770086ABAC /* UserWeather.swift */,
+				2415201D26860A5500CDFBF4 /* UserTranslate.swift */,
+				2415201F26860A6100CDFBF4 /* UserCash.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -316,6 +328,10 @@
 				2418260F26736B3200FA39EE /* WeatherWelcomeViewController.swift in Sources */,
 				241826072672463F00FA39EE /* TranslateWelcomeViewController.swift in Sources */,
 				2416950B267A40770086ABAC /* UserWeather.swift in Sources */,
+				2415202026860A6100CDFBF4 /* UserCash.swift in Sources */,
+				2415201A268609F400CDFBF4 /* TranslateService.swift in Sources */,
+				2415201E26860A5500CDFBF4 /* UserTranslate.swift in Sources */,
+				2415201C26860A1A00CDFBF4 /* CashService.swift in Sources */,
 				248995282677B9380044123D /* WeatherService.swift in Sources */,
 				248C3CBE26825081004078F1 /* AlertViewController.swift in Sources */,
 				241826052672457500FA39EE /* CashWelcomeViewController.swift in Sources */,
