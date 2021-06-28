@@ -15,23 +15,24 @@ class WeatherWelcomeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var descriptionWeather: UILabel!
     @IBOutlet weak var cityText: UITextField!
     
+    
     @IBOutlet weak var tempWeather2: UILabel!
     @IBOutlet weak var iconWeather2: UIImageView!
     @IBOutlet weak var descriptionWeather2: UILabel!
-    @IBOutlet weak var city2: UIPickerView!
+    @IBOutlet weak var citiesPickerView: UIPickerView!
     
-    //    private var cities = [String]()
-    private var cities: [String] = []
-//    let weatherService = WeatherInfo()
-    
+    private var cities: [String] = ["Paris", "New York", "Londres", "Berlin"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateWeather()
+        citiesPickerView.delegate = self
+        citiesPickerView.dataSource = self
         
     }
     @IBAction func validation(_ sender: Any) {
         updateWeather()
+        
     }
     
     private func updateWeather() {
@@ -41,12 +42,11 @@ class WeatherWelcomeViewController: UIViewController, UITextFieldDelegate {
                 DispatchQueue.main.async {
                     self.viewWeather(info: weather)
                     print(weather)
+                    print("=> success")
+                    
                 }
-                
-                print("=> success")
-            case .failure(let error):
-                print(error.localizedDescription)
-//                self.alertMessage(with: "error")
+            case .failure:
+                self.alertMessage(with: "error")
             }
         }
     }
@@ -57,16 +57,12 @@ class WeatherWelcomeViewController: UIViewController, UITextFieldDelegate {
         cityText.text = info.name
         tempWeather2.text = String(info.main.temp)
         descriptionWeather2.text = info.weather.first?.description
-        city2.selectedRow(inComponent: 0)
-        //                iconWeather.image = UIImage(data: info.weather[0].icon)
-        
+        citiesPickerView.selectedRow(inComponent: 0)
+        //  iconWeather.image = UIImage(data: info.weather[0].icon)
     }
-    
-    private func populateCities() {
-        cities.append("Paris")
-        cities.append("New York")
-    }
+
 }
+
 
 extension WeatherWelcomeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -74,16 +70,12 @@ extension WeatherWelcomeViewController: UIPickerViewDelegate, UIPickerViewDataSo
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView == city2 {
-            return cities.count
-        }
+        return cities.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView == city2 {
-            return cities[row]
-        }
+        return cities[row]
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        viewWeather =
+        print(cities[row])
     }
 }
