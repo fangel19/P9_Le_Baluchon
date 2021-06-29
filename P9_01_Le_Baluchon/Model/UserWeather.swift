@@ -20,7 +20,7 @@ struct WeatherElement: Decodable {
 }
 
 struct Main: Decodable {
-    let temp: Float
+    let temp: Double
 }
 
 enum CodingKeys: String, CodingKey {

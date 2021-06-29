@@ -23,11 +23,14 @@ class WeatherWelcomeViewController: UIViewController, UITextFieldDelegate {
     
     private var cities: [String] = ["Paris", "New York", "Londres", "Berlin"]
     
+    let dispatchGroup = DispatchGroup()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateWeather()
+
         citiesPickerView.delegate = self
         citiesPickerView.dataSource = self
+        updateWeather()
         
     }
     @IBAction func validation(_ sender: Any) {
@@ -41,6 +44,7 @@ class WeatherWelcomeViewController: UIViewController, UITextFieldDelegate {
             case .success(let weather):
                 DispatchQueue.main.async {
                     self.viewWeather(info: weather)
+                    self.dispatchGroup.leave()
                     print(weather)
                     print("=> success")
                     
