@@ -38,7 +38,7 @@ class CashWelcomeViewController: UIViewController,UITextFieldDelegate {
                     print(cash)
                 }
             case .failure:
-                self.alertMessage("Erreur")
+                self.alertMessage(title: "Erreur", message: "impossible d'afficher la monnaie, verifier votre connexion internet")
                 
             }
         }
@@ -49,7 +49,7 @@ class CashWelcomeViewController: UIViewController,UITextFieldDelegate {
         secondAmountCash.text = String(info.base)
         //        firstCash.text = info.rates[String: Double]
     }
-    private func alertMessage(_ message: String) {
+    private func alertMessage(title: String, message: String) {
         let alertVC = UIAlertController(title: "Erreur!", message: message, preferredStyle: .alert)
             alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             return self.present(alertVC, animated: true, completion: nil)

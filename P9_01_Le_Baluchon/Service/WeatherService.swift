@@ -9,6 +9,8 @@ import Foundation
 
 class WeatherService {
     
+    // MARK: - Singleton
+    
     static let shared = WeatherService()
     
     enum APIError: Error {
@@ -18,8 +20,12 @@ class WeatherService {
     
     func getWeather(city: String, completion: @escaping (Result<WeatherInfo, APIError>) -> Void) {
         
-        let urlWeather = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=df50781f0d5dda3bc246e09ed6adaa23&units=metric&lang=fr")
         
+        let urlString = "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=df50781f0d5dda3bc246e09ed6adaa23&units=metric&lang=fr"
+        guard let url = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+        
+        let urlWeather = URL(string: url)
+    
         guard let url = urlWeather else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"

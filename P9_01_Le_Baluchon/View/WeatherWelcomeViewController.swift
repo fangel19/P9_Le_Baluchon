@@ -10,96 +10,115 @@ import UIKit
 class WeatherWelcomeViewController: UIViewController, UITextFieldDelegate {
     
     
+    //MARK: - Outlets
+    
     @IBOutlet weak var tempWeather: UILabel!
     @IBOutlet weak var iconWeather: UIImageView!
     @IBOutlet weak var descriptionWeather: UILabel!
     
     @IBOutlet weak var cityLabel: UILabel!
     
-    
     @IBOutlet weak var tempWeather2: UILabel!
     @IBOutlet weak var iconWeather2: UIImageView!
     @IBOutlet weak var descriptionWeather2: UILabel!
+    
     @IBOutlet weak var citiesPickerView: UIPickerView!
     
-    private var cities: [String] = ["Paris", "New York", "Londres", "Berlin"]
+    // MARK: - Properties
     
+    private var cities: [String] = ["Paris", "New York", "Londres", "Madrid"]
     
-    let dispatchGroup = DispatchGroup()
-    
+    // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         citiesPickerView.delegate = self
         citiesPickerView.dataSource = self
+        citiesPickerView.selectRow(0, inComponent: 0, animated: false)
         updateWeatherOne()
         updateWeatherTwo()
-        
-    }
-    @IBAction func validation(_ sender: Any) {
-        updateWeatherTwo()
-        
     }
     
     private func updateWeatherOne() {
-        WeatherService.shared.getWeather(city: "Paris") { result in
+        
+        WeatherService.shared.getWeather(city: cities[1]) { result in
             switch result {
             case .success(let weather):
+                
                 DispatchQueue.main.async {
                     self.tempWeather.text =  String(weather.main.temp)
                     self.descriptionWeather.text  =  weather.weather.first?.description
                     self.cityLabel.text = weather.name
-                    self.iconWeather.downloaded(from: "https://openweathermap.org/img/wn/10d@2x.png")
-                    print("ICI =>", weather.name)
-
+                    //                    if weather.weather.first?.icon
+                    //                    if iconWeather.image == UIImage(weather.weather.first?.icon) {
+                    if let icon = weather.weather.first?.icon {
+                        self.iconWeather.downloaded(from: "https://openweathermap.org/img/wn/\(icon)@2x.png")
+                        print("ICI =>", weather.name)
+                    }
                 }
             case .failure:
-                self.alertMessage("Erreur")
+                
+                self.alertMessage(title: "Erreur", message: "impossible d'afficher la selection, verifier votre connexion")
                 print("error")
             }
         }
     }
     
     private func updateWeatherTwo() {
-        WeatherService.shared.getWeather(city: "Londres") { result in
+        
+        WeatherService.shared.getWeather(city: cities[citiesPickerView.selectedRow(inComponent: 0)]) { result in
             switch result {
             case .success(let weather):
+                
                 DispatchQueue.main.async {
                     self.tempWeather2.text = String(weather.main.temp)
                     self.descriptionWeather2.text = weather.weather.first?.description
-                    self.citiesPickerView.selectedRow(inComponent: 0)
-                    self.iconWeather2.downloaded(from: "https://openweathermap.org/img/wn/10d@2x.png")
-                    print("=> success")
-
+                    
+                    if let icon = weather.weather.first?.icon {
+                        self.iconWeather2.downloaded(from: "https://openweathermap.org/img/wn/\(icon)@2x.png")
+                        print("=> success")
+                    }
+                    
                 }
             case .failure:
-                print("error")
-//                self.alertMessage(with: "error")
+                
+                self.alertMessage(title: "Erreur", message: "Impossible d'afficher la ville, vérifier votre connexion internet")
             }
         }
     }
-    private func alertMessage(_ message: String) {
-        let alertVC = UIAlertController(title: "Erreur!", message: message, preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            return self.present(alertVC, animated: true, completion: nil)
+    
+    private func alertMessage(title: String, message: String) {
+        
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        return self.present(alertVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func validation(_ sender: Any) {
+        
+        updateWeatherTwo()
     }
 }
 
+//MARK: - Delegate
 
 extension WeatherWelcomeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return cities.count
     }
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return cities[row]
     }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print(cities[row])
-//        updateWeatherTwo()
     }
 }
+
