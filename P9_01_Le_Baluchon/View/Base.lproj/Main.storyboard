@@ -300,7 +300,7 @@
                                 <rect key="frame" x="25" y="99" width="325" height="439"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="NLQ-8n-HOF">
-                                        <rect key="frame" x="0.0" y="0.0" width="325" height="198.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="325" height="185"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DR6-wm-9LT">
                                                 <rect key="frame" x="0.0" y="0.0" width="325" height="80"/>
@@ -320,15 +320,16 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CITY" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dcr-q4-bZr" userLabel="City Text">
-                                                <rect key="frame" x="0.0" y="164.5" width="325" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmk-eq-rb3">
+                                                <rect key="frame" x="0.0" y="164.5" width="325" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="402-72-Yq1" userLabel="Second Stack View">
-                                        <rect key="frame" x="0.0" y="210.5" width="325" height="228.5"/>
+                                        <rect key="frame" x="0.0" y="197" width="325" height="242"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="26" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eu9-qr-pGf" userLabel="Second Temp Weather">
                                                 <rect key="frame" x="0.0" y="0.0" width="325" height="80"/>
@@ -349,7 +350,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" horizontalHuggingPriority="247" verticalCompressionResistancePriority="747" translatesAutoresizingMaskIntoConstraints="NO" id="nVe-r4-SOP">
-                                                <rect key="frame" x="0.0" y="164.5" width="325" height="64"/>
+                                                <rect key="frame" x="0.0" y="164.5" width="325" height="77.5"/>
                                             </pickerView>
                                         </subviews>
                                     </stackView>
@@ -389,7 +390,7 @@
                     <navigationItem key="navigationItem" title="Météo" id="jkg-nb-VVL"/>
                     <connections>
                         <outlet property="citiesPickerView" destination="nVe-r4-SOP" id="FfT-qh-nKD"/>
-                        <outlet property="cityText" destination="dcr-q4-bZr" id="t7J-xU-3V3"/>
+                        <outlet property="cityLabel" destination="hmk-eq-rb3" id="DmP-EU-dzW"/>
                         <outlet property="descriptionWeather" destination="zrJ-Wj-Lk0" id="BSZ-Ae-fjc"/>
                         <outlet property="descriptionWeather2" destination="IZr-KZ-Yq6" id="zrH-hp-tBm"/>
                         <outlet property="iconWeather" destination="sbs-gg-akS" id="py6-Zb-nrf"/>

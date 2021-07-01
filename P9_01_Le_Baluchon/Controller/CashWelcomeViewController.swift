@@ -38,7 +38,8 @@ class CashWelcomeViewController: UIViewController,UITextFieldDelegate {
                     print(cash)
                 }
             case .failure:
-                self.alertMessage(with: "error")
+                self.alertMessage("Erreur")
+                
             }
         }
     }
@@ -47,6 +48,11 @@ class CashWelcomeViewController: UIViewController,UITextFieldDelegate {
         firstAmountCash.text = String(info.base)
         secondAmountCash.text = String(info.base)
         //        firstCash.text = info.rates[String: Double]
+    }
+    private func alertMessage(_ message: String) {
+        let alertVC = UIAlertController(title: "Erreur!", message: message, preferredStyle: .alert)
+            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            return self.present(alertVC, animated: true, completion: nil)
     }
 }
 //extension CashWelcomeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
