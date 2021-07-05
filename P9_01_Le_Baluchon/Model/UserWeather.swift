@@ -19,18 +19,18 @@ struct WeatherElement: Decodable {
     let description: String
     let icon: String
     
+    enum CodingKeys: String, CodingKey {
+        case description = "description"
+        case icon = "icon"
+    }
 }
 
 struct Main: Decodable {
     
     let temp: Double
-}
-
-enum CodingKeys: String, CodingKey {
     
-    case name = "name"
-    case description = "description"
-    case icon = "icon"
+    enum CodingKeys: String, CodingKey {
+    
     case temp
 }
-
+}

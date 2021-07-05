@@ -26,8 +26,9 @@ class WeatherWelcomeViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Properties
     
-    private var cities: [String] = ["Paris", "New York", "Londres", "Madrid"]
+    private var cities: [String] = ["Paris", "New York", "Londres", "Madrid", "Tokyo"]
     
+
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
@@ -47,7 +48,7 @@ class WeatherWelcomeViewController: UIViewController, UITextFieldDelegate {
             case .success(let weather):
                 
                 DispatchQueue.main.async {
-                    self.tempWeather.text =  String(weather.main.temp)
+                    self.tempWeather.text =  String(weather.main.temp.tempInt)
                     self.descriptionWeather.text  =  weather.weather.first?.description
                     self.cityLabel.text = weather.name
                     //                    if weather.weather.first?.icon
@@ -72,7 +73,7 @@ class WeatherWelcomeViewController: UIViewController, UITextFieldDelegate {
             case .success(let weather):
                 
                 DispatchQueue.main.async {
-                    self.tempWeather2.text = String(weather.main.temp)
+                    self.tempWeather2.text = String(weather.main.temp.tempInt)
                     self.descriptionWeather2.text = weather.weather.first?.description
                     
                     if let icon = weather.weather.first?.icon {
