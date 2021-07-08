@@ -166,45 +166,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NIw-ih-tL9">
-                                <rect key="frame" x="25" y="119" width="325" height="419"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NIw-ih-tL9">
+                                <rect key="frame" x="25" y="109" width="325" height="429"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xbV-mI-dHf" userLabel="Monnaie1">
-                                        <rect key="frame" x="0.0" y="0.0" width="325" height="199.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="325" height="166.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€uro" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="31b-za-WnI">
-                                                <rect key="frame" x="0.0" y="0.0" width="325" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="325" height="47.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="10" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DVK-fh-m1X">
-                                                <rect key="frame" x="0.0" y="30.5" width="325" height="59"/>
+                                                <rect key="frame" x="0.0" y="57.5" width="325" height="109"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="gxe-Lb-x5Y" id="hO9-6H-VJv"/>
                                                 </connections>
                                             </textField>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GdF-Uk-YqT">
-                                                <rect key="frame" x="0.0" y="99.5" width="325" height="100"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="FDa-Mx-QDI"/>
-                                                </constraints>
-                                            </pickerView>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ske-bQ-cic" userLabel="Monnaie2">
-                                        <rect key="frame" x="0.0" y="219.5" width="325" height="199.5"/>
+                                        <rect key="frame" x="0.0" y="186.5" width="325" height="242.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dollars" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzT-cd-Pvy">
-                                                <rect key="frame" x="0.0" y="0.0" width="325" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="325" height="24.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="10" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6WO-mK-ELh">
-                                                <rect key="frame" x="0.0" y="30.5" width="325" height="59"/>
+                                                <rect key="frame" x="0.0" y="34.5" width="325" height="98"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -212,7 +206,7 @@
                                                 </connections>
                                             </textField>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kEV-Qt-xqo">
-                                                <rect key="frame" x="0.0" y="99.5" width="325" height="100"/>
+                                                <rect key="frame" x="0.0" y="142.5" width="325" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="fGt-v7-gse"/>
                                                 </constraints>
@@ -247,7 +241,7 @@
                             <constraint firstItem="Pdc-bn-p8p" firstAttribute="top" secondItem="qsh-kR-gAo" secondAttribute="top" constant="15" id="QjM-Dy-877"/>
                             <constraint firstItem="qsh-kR-gAo" firstAttribute="trailing" secondItem="Pdc-bn-p8p" secondAttribute="trailing" constant="15" id="Sij-0T-75Y"/>
                             <constraint firstItem="qsh-kR-gAo" firstAttribute="trailing" secondItem="NIw-ih-tL9" secondAttribute="trailing" constant="25" id="Wtl-g5-fFt"/>
-                            <constraint firstItem="NIw-ih-tL9" firstAttribute="top" secondItem="qsh-kR-gAo" secondAttribute="top" constant="75" id="ZUz-ef-4W0"/>
+                            <constraint firstItem="NIw-ih-tL9" firstAttribute="top" secondItem="qsh-kR-gAo" secondAttribute="top" constant="65" id="ZUz-ef-4W0"/>
                             <constraint firstItem="KFp-pu-1eK" firstAttribute="centerX" secondItem="qsh-kR-gAo" secondAttribute="centerX" id="cO3-Fj-Qxz"/>
                             <constraint firstItem="NIw-ih-tL9" firstAttribute="leading" secondItem="qsh-kR-gAo" secondAttribute="leading" constant="25" id="dUI-J4-3Tb"/>
                         </constraints>
@@ -256,7 +250,6 @@
                     <connections>
                         <outlet property="firstAmountCash" destination="DVK-fh-m1X" id="TtS-iu-L28"/>
                         <outlet property="firstCash" destination="31b-za-WnI" id="ZCa-OF-ebt"/>
-                        <outlet property="firstCashPickerView" destination="GdF-Uk-YqT" id="uIf-Xt-SmZ"/>
                         <outlet property="secondAmountCash" destination="6WO-mK-ELh" id="VWa-dM-SGJ"/>
                         <outlet property="secondCash" destination="bzT-cd-Pvy" id="u90-zc-rQB"/>
                         <outlet property="secondCashPickerView" destination="kEV-Qt-xqo" id="FHE-fj-2Fw"/>

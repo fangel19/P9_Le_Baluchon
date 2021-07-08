@@ -7,7 +7,9 @@
 
 import Foundation
 
-class   CashService {
+class CashService {
+    
+    // MARK: - Singleton
     
     static let shared = CashService()
     
@@ -18,7 +20,7 @@ class   CashService {
     
     func getCash(cash: String, completion: @escaping (Result<CashInfo, APIError>) -> Void) {
         
-        let urlCash = URL(string: "https://data.fixer.io/api/latest?access_key=69821d275fa932b77bb0f107de2eb4eb")
+        let urlCash = URL(string: "https://data.fixer.io/q=\(cash)&api/latest?access_key=69821d275fa932b77bb0f107de2eb4eb")
         
         guard let url = urlCash else { return }
         var request = URLRequest(url: url)
@@ -26,10 +28,8 @@ class   CashService {
         
         let session = URLSession(configuration: .default)
         
-        let task = session.dataTask(with: request) {
-            (data, response, error) in
-            guard error == nil else {
-                completion(.failure(.server))
+        let task = session.dataTask(with: request) { (data, response, error) in
+            guard error == nil else { completion(.failure(.server))
                 print("erreur")
                 return
             }

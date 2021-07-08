@@ -28,7 +28,6 @@ class WeatherWelcomeViewController: UIViewController, UITextFieldDelegate {
     
     private var cities: [String] = ["Paris", "New York", "Londres", "Madrid", "Tokyo"]
     
-
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
@@ -51,8 +50,7 @@ class WeatherWelcomeViewController: UIViewController, UITextFieldDelegate {
                     self.tempWeather.text =  String(weather.main.temp.tempInt)
                     self.descriptionWeather.text  =  weather.weather.first?.description
                     self.cityLabel.text = weather.name
-                    //                    if weather.weather.first?.icon
-                    //                    if iconWeather.image == UIImage(weather.weather.first?.icon) {
+                    
                     if let icon = weather.weather.first?.icon {
                         self.iconWeather.downloaded(from: "https://openweathermap.org/img/wn/\(icon)@2x.png")
                         print("ICI =>", weather.name)

@@ -18,6 +18,7 @@
 		2418260F26736B3200FA39EE /* WeatherWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2418260E26736B3200FA39EE /* WeatherWelcomeViewController.swift */; };
 		241B25D5269373E1005514F1 /* DoubleInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241B25D4269373E1005514F1 /* DoubleInt.swift */; };
 		248995282677B9380044123D /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248995272677B9380044123D /* WeatherService.swift */; };
+		24D2519526972B1300F66689 /* Cash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D2519426972B1300F66689 /* Cash.swift */; };
 		24E6E59D268DB79A00B39A95 /* ImageView+AddOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E6E59C268DB79900B39A95 /* ImageView+AddOn.swift */; };
 		24E956BE263C4F2C00C8EEB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E956BD263C4F2C00C8EEB5 /* AppDelegate.swift */; };
 		24E956C5263C4F2C00C8EEB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24E956C3263C4F2C00C8EEB5 /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 		2418260E26736B3200FA39EE /* WeatherWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeatherWelcomeViewController.swift; path = P9_01_Le_Baluchon/View/WeatherWelcomeViewController.swift; sourceTree = SOURCE_ROOT; };
 		241B25D4269373E1005514F1 /* DoubleInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleInt.swift; sourceTree = "<group>"; };
 		248995272677B9380044123D /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		24D2519426972B1300F66689 /* Cash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cash.swift; sourceTree = "<group>"; };
 		24E6E59C268DB79900B39A95 /* ImageView+AddOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+AddOn.swift"; sourceTree = "<group>"; };
 		24E956BA263C4F2C00C8EEB5 /* P9_01_Le_Baluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = P9_01_Le_Baluchon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24E956BD263C4F2C00C8EEB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				2416950A267A40770086ABAC /* UserWeather.swift */,
 				2415201D26860A5500CDFBF4 /* UserTranslate.swift */,
 				2415201F26860A6100CDFBF4 /* UserCash.swift */,
+				24D2519426972B1300F66689 /* Cash.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				2415201E26860A5500CDFBF4 /* UserTranslate.swift in Sources */,
 				2415201C26860A1A00CDFBF4 /* CashService.swift in Sources */,
 				248995282677B9380044123D /* WeatherService.swift in Sources */,
+				24D2519526972B1300F66689 /* Cash.swift in Sources */,
 				241826052672457500FA39EE /* CashWelcomeViewController.swift in Sources */,
 				240A6FC12641841700BA9DD5 /* WelcomeViewController.swift in Sources */,
 				24E956BE263C4F2C00C8EEB5 /* AppDelegate.swift in Sources */,
