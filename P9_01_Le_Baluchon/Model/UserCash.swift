@@ -7,23 +7,34 @@
 
 import Foundation
 
-struct CashInfo: Codable {
+struct CashInfo: Decodable {
     
-    let success: Bool
-    let timestamp: Int
-    let base, date: String
     let rates: [String: Double]
-    
-    enum CodingKeysCash: String, CodingKey {
-        case success
-        case timestamp
-        case base = "base"
-        case rates
+}
+
+extension CashInfo {
+    private func convertFromEuro(value: Double, rates: Double) -> Double {
+        return value * rates
+    }
+    private func convertToEuro(value: Double, rates: Double) -> Double {
+        return value / rates
+    }
+    func convert(value: Double, from: String, to: String) -> Double {
+        if from == "EUR" {
+            
+            let rate = Double((rates[to] ?? 0.0))
+            let convertValue = convertFromEuro(value: value, rates: rate)
+            return convertValue
+            
+        } else {
+            
+            var rate = Double((rates[from] ?? 0.0))
+            let value = convertToEuro(value: value, rates: rate)
+            
+            rate = Double((rates[to] ?? 0.0))
+            let convertValue = convertFromEuro(value: value, rates: rate)
+            return convertValue
+        }
     }
 }
-//
-//enum CodingKeysCash: String, CodingKey {
-//    case success
-//    case timestamp
-//    case base = "base"
-//}
+
