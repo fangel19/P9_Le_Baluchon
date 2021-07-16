@@ -18,9 +18,9 @@ class CashService {
         case decoding
     }
     
-    func getCash(cash: String, completion: @escaping (Result<CashInfo, APIError>) -> Void) {
+    func getCash(completion: @escaping (Result<CashInfo, APIError>) -> Void) {
         
-        let urlCash = URL(string: "https://data.fixer.io/q=\(cash)&api/latest?access_key=69821d275fa932b77bb0f107de2eb4eb")
+        let urlCash = URL(string: "http://data.fixer.io/latest?access_key=69821d275fa932b77bb0f107de2eb4eb")
         
         guard let url = urlCash else { return }
         var request = URLRequest(url: url)
