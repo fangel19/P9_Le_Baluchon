@@ -11,4 +11,7 @@ extension Double  {
     var tempInt: String {
         return "\(Int(self))°"
     }
+    var cashInt: String {
+        return "\(Int(self))"
+    }
 }

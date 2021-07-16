@@ -7,15 +7,23 @@
 
 import UIKit
 
-class CashWelcomeViewController: UIViewController,UITextFieldDelegate {
+class CashWelcomeViewController: UIViewController {
     
     //MARK: - Outlets
     
     @IBOutlet weak var firstCash: UILabel!
-    @IBOutlet weak var firstAmountCash: UITextField!
+    @IBOutlet weak var firstAmountCash: UITextField! {
+        didSet {
+            firstAmountCash.addDoneCancelToolbar(onDone: (target: self, action: #selector(doneTappedFirstAmount)))
+        }
+    }
     
     @IBOutlet weak var secondCash: UILabel!
-    @IBOutlet weak var secondAmountCash: UITextField!
+    @IBOutlet weak var secondAmountCash: UITextField! {
+        didSet {
+            secondAmountCash.addDoneCancelToolbar(onDone: (target: self, action: #selector(doneTappedSecondAmount)))
+        }
+    }
     @IBOutlet weak var secondCashPickerView: UIPickerView!
     
     //    MARK: - Properties
@@ -50,14 +58,48 @@ class CashWelcomeViewController: UIViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.firstCash.text = "EUR"
+        self.secondCash.text = "Choisir une monnaie"
         secondCashPickerView.delegate = self
         secondCashPickerView.dataSource = self
         secondCashPickerView.selectRow(0, inComponent: 0, animated: false)
+        firstAmountCash.delegate = self
 //        updateCashOne()
-        updateCashTwo()
+        let selectedCash = self.secondCashPickerView.selectedRow(inComponent: 0)
+        let cashList = self.cashName.keys.sorted()
+//                    verifier avec guard let
+        let list = self.cashName[cashList[selectedCash]]!
+        updateCashTwo(to: list, toEuro: false)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name:UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name:UIResponder.keyboardWillHideNotification, object: nil)
+        
     }
     
+    @objc func doneTappedFirstAmount() {
+        let selectedCash = self.secondCashPickerView.selectedRow(inComponent: 0)
+        let cashList = self.cashName.keys.sorted()
+//                    verifier avec guard let
+        let list = self.cashName[cashList[selectedCash]]!
+        updateCashTwo(to: list, toEuro: false)
+        firstAmountCash.resignFirstResponder()
+    }
+    
+    @objc func doneTappedSecondAmount() {
+        let selectedCash = self.secondCashPickerView.selectedRow(inComponent: 0)
+        let cashList = self.cashName.keys.sorted()
+//                    verifier avec guard let
+        let list = self.cashName[cashList[selectedCash]]!
+        updateCashTwo(to: list, toEuro: true)
+        secondAmountCash.resignFirstResponder()
+    }
+    
+    @objc func keyboardWillShow(sender: NSNotification) {
+         self.view.frame.origin.y = -150 // Move view 150 points upward
+    }
+
+    @objc func keyboardWillHide(sender: NSNotification) {
+         self.view.frame.origin.y = 0 // Move view to original position
+    }
 //    private func updateCashOne() {
 //
 //        CashService.shared.getCash() { [weak self] result in
@@ -90,30 +132,31 @@ class CashWelcomeViewController: UIViewController,UITextFieldDelegate {
 //        }
 //    }
 //
-    private func updateCashTwo() {
+    private func updateCashTwo(to: String, toEuro: Bool) {
 //        var nameKeys = [String](cashName.keys)
         
         CashService.shared.getCash() { result in
             switch result {
             case .success(let cashResult):
                 DispatchQueue.main.async {
-                    
-                    self.firstCash.text = "EUR"
-                    self.secondCash.text = "USD"
-                    
+
                     guard let text = self.firstAmountCash.text, let value = Double(text)
                     else { return }
                     
-                    let selectedCash = self.secondCashPickerView.selectedRow(inComponent: 0)
-                    let cashList = self.cashName.keys.sorted()
-                    let list = self.cashName[cashList[selectedCash]]!
-//                    nameKeys = cashResult.rates.keys.sorted()
+                    if !toEuro {
                     
-                    self.secondAmountCash.text = String(cashResult.convert(value: value, from: "EUR", to: list))
-                    self.secondCash.text = list
+                    self.secondAmountCash.text = String(cashResult.convert(value: value, from: "EUR", to: to))
+                    self.secondCash.text = to
                     
 
-                    
+                    } else {
+                        let selectedCash = self.secondCashPickerView.selectedRow(inComponent: 0)
+                        let cashList = self.cashName.keys.sorted()
+    //                    verifier avec guard let
+                        let list = self.cashName[cashList[selectedCash]]!
+    //                    nameKeys = cashResult.rates.keys.sorted()
+                        self.firstAmountCash.text = String(cashResult.convert(value: value, from: list, to: "EUR"))
+                    }
                     
                     //                    self.firstAmountCash.text = String(text)
                     
@@ -165,13 +208,17 @@ class CashWelcomeViewController: UIViewController,UITextFieldDelegate {
     //    MARK: - Action
     
     @IBAction func changeCash(_ sender: Any) {
-        updateCashTwo()
+        let selectedCash = self.secondCashPickerView.selectedRow(inComponent: 0)
+        let cashList = self.cashName.keys.sorted()
+//                    verifier avec guard let
+        let list = self.cashName[cashList[selectedCash]]!
+        updateCashTwo(to: list, toEuro: false)
     }
 }
 
 //MARK: - Delegate
 
-extension CashWelcomeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+extension CashWelcomeViewController: UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -188,5 +235,18 @@ extension CashWelcomeViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print(cashName.keys.sorted()[row])
     }
+//
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        print("TOTO")
+//        let selectedCash = self.secondCashPickerView.selectedRow(inComponent: 0)
+//        let cashList = self.cashName.keys.sorted()
+////                    verifier avec guard let
+//        let list = self.cashName[cashList[selectedCash]]!
+//        updateCashTwo(to: list, )
+//    }
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        print("TATA")
+//        return true
+//    }
 }
 

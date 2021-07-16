@@ -22,16 +22,16 @@ extension CashInfo {
     func convert(value: Double, from: String, to: String) -> Double {
         if from == "EUR" {
             
-            let rate = Double((rates[to] ?? 0.0))
+            let rate = Double((rates[to] ?? 0))
             let convertValue = convertFromEuro(value: value, rates: rate)
             return convertValue
             
         } else {
             
-            var rate = Double((rates[from] ?? 0.0))
+            var rate = Double((rates[from] ?? 0))
             let value = convertToEuro(value: value, rates: rate)
             
-            rate = Double((rates[to] ?? 0.0))
+            rate = Double((rates[to] ?? 0))
             let convertValue = convertFromEuro(value: value, rates: rate)
             return convertValue
         }
