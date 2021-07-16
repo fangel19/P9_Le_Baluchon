@@ -20,17 +20,24 @@ class CashWelcomeViewController: UIViewController,UITextFieldDelegate {
     
     //    MARK: - Properties
     
-    var cashName: [String:String] = [
-        "Euro": "EUR",
+    var cashName: [String: String] = [
+        "Dollar Canadien": "CAD",
         "Dollar": "USD",
         "Livre sterling": "GBP",
         "Yen": "JPY"]
     
-    func dictionnaryCash() {
-        for (nameCash, valuesCash) in cashName {
-            print("\(nameCash) mesure \(valuesCash)m")
-        }
-    }
+    //    let cashList = cashName.keys.sorted()
+    
+    //    func dictionnaryCash() {
+    //        for (nameCash, valuesCash) in cashName {
+    //            print("\(nameCash) mesure \(valuesCash)m")
+    //        }
+    //    }
+//    func dictionnaryCash() {
+//        var nameKeys = [String](cashName.keys)
+//
+//        let nameValues = [String](cashName.values)
+//    }
     //    let nameKeys = [String](cashName.keys)
     //    let nameValues = [String](cashName.values)
     //    let cashName = [
@@ -47,44 +54,70 @@ class CashWelcomeViewController: UIViewController,UITextFieldDelegate {
         secondCashPickerView.delegate = self
         secondCashPickerView.dataSource = self
         secondCashPickerView.selectRow(0, inComponent: 0, animated: false)
-        updateCashOne()
+//        updateCashOne()
         updateCashTwo()
     }
     
-    private func updateCashOne() {
-        
-        CashService.shared.getCash() { result in
-            switch result {
-            case .success(let cashResult):
-                DispatchQueue.main.async {
-                    print(cashResult)
-                    guard let text = self.firstAmountCash.text, let value = Double(text)
-                    else { return }
-                    
-                    self.firstCash.text = self.cashName.updateValue("Euro", forKey: "EUR")
-                    //                    self.firstCash.text = cashResult.rates[String: value(forKey: "EUR")]
-                    self.firstAmountCash.text = String(cashResult.convert(value: value, from: "EUR", to: "USD"))
-                    
-                    //                DispatchQueue.main.async {
-                    //                    self.firstCash.text = String(cashResult.base)
-                    //                    self.firstAmountCash.text = "1"
-                    //                    print("success")
-                }
-            case .failure(let error):
-                //                self.alertMessage(title: "Erreur", message: "impossible d'afficher la monnaie, verifier votre connexion internet")
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
+//    private func updateCashOne() {
+//
+//        CashService.shared.getCash() { [weak self] result in
+//            guard let self = self else { return }
+//            switch result {
+//            case .success(let cashResult):
+//                DispatchQueue.main.async {
+//                    print(cashResult)
+//                    //                    nameKeys = cashResult.rates.keys.sorted()
+////                    self.firstCash.text = "€uros"
+////
+////                    guard let text = self.secondAmountCash.text, let value = Double(text)
+////                    else { return }
+//
+//                    //                    cashName.text = String(cashResult)
+//
+//                    //                    self.firstCash.text = self.cashName.updateValue("Euro", forKey: "EUR")
+//                    //                    self.firstCash.text = cashResult.rates[String: value(forKey: "EUR")]
+////                    self.firstAmountCash.text = String(cashResult.convert(value: value, from: "USD", to: "EUR"))
+//
+//                    //                DispatchQueue.main.async {
+//                    //                    self.firstCash.text = String(cashResult.base)
+//                    //                    self.firstAmountCash.text = "1"
+//                    //                    print("success")
+//                }
+//            case .failure(let error):
+//                //                self.alertMessage(title: "Erreur", message: "impossible d'afficher la monnaie, verifier votre connexion internet")
+//                print(error.localizedDescription)
+//            }
+//        }
+//    }
+//
     private func updateCashTwo() {
+//        var nameKeys = [String](cashName.keys)
         
         CashService.shared.getCash() { result in
             switch result {
             case .success(let cashResult):
                 DispatchQueue.main.async {
+                    
+                    self.firstCash.text = "EUR"
+                    self.secondCash.text = "USD"
+                    
                     guard let text = self.firstAmountCash.text, let value = Double(text)
                     else { return }
+                    
+                    let selectedCash = self.secondCashPickerView.selectedRow(inComponent: 0)
+                    let cashList = self.cashName.keys.sorted()
+                    let list = self.cashName[cashList[selectedCash]]!
+//                    nameKeys = cashResult.rates.keys.sorted()
+                    
+                    self.secondAmountCash.text = String(cashResult.convert(value: value, from: "EUR", to: list))
+                    self.secondCash.text = list
+                    
+
+                    
+                    
+                    //                    self.firstAmountCash.text = String(text)
+                    
+                    //                    let firstNumber = Double(self.firstAmountCash.text!) ?? 1.0
                     //                    self.secondCashPickerView = cashName[String: "Euro"]?
                     
                     //                    var selectedCash = self.cashName.keys
@@ -93,14 +126,19 @@ class CashWelcomeViewController: UIViewController,UITextFieldDelegate {
                     //                    [cashName.secondCashPickerView.selectedRow(inComponent: 0))
                     //                    let selectedCash = self.secondCashPickerView.selectedRow(inComponent: 0)
                     
-                    self.secondAmountCash.text = String(cashResult.convert(value: value, from: "EUR", to: "USD"))
+                    //                    self.secondCash.text = (self.cashName["EUR"])
+                    
+                    //                    self.firstAmountCash.text = String(cashResult.convert(value: value, from: "USD", to: "EUR"))
                     
                     //                    self.secondCash.text = cashResult.rates.first?.key
                     
-                    self.secondCash.text = self.cashName.debugDescription
+                    //                    var cashPickerview = self.secondCashPickerView.selectedRow(inComponent: 0)
                     
-                    print("-> ici", cashResult.convert(value: value, from: "EUR", to: "USD"))
-                    print(cashResult)
+                    //                    self.secondCash.text = (self.cashName[""])
+                    //                    self.secondCash.text = secondAmountCash.text(in: cashPickerview)
+                    
+                    //                    print("-> ici", cashResult.convert(value: value, from: "USD", to: cashPickerview.description))
+                    //                    print(cashResult)
                     //                DispatchQueue.main.async {
                     ////                    self.secondCash.text = String(cashResult.base)
                     //                    self.secondAmountCash.text = cashResult.rates.debugDescription
