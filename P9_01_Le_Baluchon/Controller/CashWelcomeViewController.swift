@@ -59,17 +59,13 @@ class CashWelcomeViewController: UIViewController {
     
     @objc func doneTappedSecondAmount() {
         
-        let selectedCash = self.secondCashPickerView.selectedRow(inComponent: 0)
-        let cashList = self.cashName.keys.sorted()
-//                    verifier avec guard let
-        guard let list = self.cashName[cashList[selectedCash]] else { return }
-        
-        updateCashTwo(to: list, toEuro: true)
+        cashPickerViewTrue()
         secondAmountCash.resignFirstResponder()
     }
     
+    //Display keyboard
     @objc func keyboardWillShow(sender: NSNotification) {
-        self.view.frame.origin.y = -150 // Move view 150 points upward
+        self.view.frame.origin.y = -120 // Move view 120 points upward
     }
     
     @objc func keyboardWillHide(sender: NSNotification) {
@@ -85,6 +81,14 @@ class CashWelcomeViewController: UIViewController {
         updateCashTwo(to: list, toEuro: false)
     }
     
+    func cashPickerViewTrue() {
+        let selectedCash = self.secondCashPickerView.selectedRow(inComponent: 0)
+        let cashList = self.cashName.keys.sorted()
+        guard let list = self.cashName[cashList[selectedCash]] else { return }
+        
+        updateCashTwo(to: list, toEuro: true)
+    }
+    
     private func updateCashTwo(to: String, toEuro: Bool) {
         
         CashService.shared.getCash() { result in
@@ -97,16 +101,14 @@ class CashWelcomeViewController: UIViewController {
                     
                     if !toEuro {
                         
-                        self.secondAmountCash.text = String(cashResult.convert(value: value, from: "EUR", to: to))
+                        self.resultWithTwoDecimal(result: cashResult.convert(value: value, from: "EUR", to: to), toSecondCash: true)
                         self.secondCash.text = to
-                        
                         
                     } else {
                         let selectedCash = self.secondCashPickerView.selectedRow(inComponent: 0)
                         let cashList = self.cashName.keys.sorted()
                         guard let list = self.cashName[cashList[selectedCash]] else { return }
-
-                        self.firstAmountCash.text = String(cashResult.convert(value: value, from: list, to: "EUR"))
+                        self.resultWithTwoDecimal(result: cashResult.convert(value: value, from: list, to: "EUR"), toSecondCash: false)
                     }
                 }
             case .failure(let error):
@@ -117,7 +119,16 @@ class CashWelcomeViewController: UIViewController {
             }
         }
     }
+    //    MARK: - Result with two decimal in firstAmountCash and secondAmountCash
     
+    private func resultWithTwoDecimal(result: Double, toSecondCash: Bool) {
+        let resultTwoDecimal = String(format: "%.2f", result)
+        if !toSecondCash {
+            firstAmountCash.text = resultTwoDecimal
+        } else {
+            secondAmountCash.text = resultTwoDecimal
+        }
+    }
     //    MARK: - Alert message
     
     private func alertMessage(title: String, message: String) {
@@ -127,7 +138,7 @@ class CashWelcomeViewController: UIViewController {
         present(alertVC, animated: true, completion: nil)
     }
     
-    //    MARK: - Action
+    //    MARK: - Action button validate
     
     @IBAction func changeCash(_ sender: Any) {
         cashPickerViewFalse()
