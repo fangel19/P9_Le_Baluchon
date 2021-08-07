@@ -65,7 +65,7 @@ class CashWelcomeViewController: UIViewController {
     
     //Display keyboard
     @objc func keyboardWillShow(sender: NSNotification) {
-        self.view.frame.origin.y = -120 // Move view 120 points upward
+        self.view.frame.origin.y = -100 // Move view 100 points upward
     }
     
     @objc func keyboardWillHide(sender: NSNotification) {

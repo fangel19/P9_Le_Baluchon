@@ -6,3 +6,18 @@
 //
 
 import Foundation
+
+// MARK: - Welcome
+struct Welcome: Decodable {
+    let data: DataClass
+}
+
+// MARK: - DataClass
+struct DataClass: Decodable {
+    let translations: [Translation]
+}
+
+// MARK: - Translation
+struct Translation: Decodable {
+    let translatedText, detectedSourceLanguage: String
+}
