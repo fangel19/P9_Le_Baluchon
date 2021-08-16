@@ -6,24 +6,39 @@
 //
 
 import Foundation
+
 class TranslateService {
     
     // MARK: - Singleton
     
     static let shared = TranslateService()
     
+    // MARK: - API Key
+
+    private var apiKey = "AIzaSyBjz9BBKSKzzKSpFgxumEXOxIjWzFn1XBc"
+    
+    // MARK: - Enum API
+
     enum APIError: Error {
+        
         case server
         case decoding
     }
     
-    func postTranslate(language: String, completion: @escaping (Result<Welcome, APIError>) -> Void) {
+    // MARK: - Call API
+
+    func postTranslate(language: String, completion: @escaping (Result<Translate, APIError>) -> Void) {
         
-        let urlTranslate = URL(string: "https://translation.googleapis.com/language/translate/v2?key=AIzaSyBjz9BBKSKzzKSpFgxumEXOxIjWzFn1XBc&q=\(language)&target=EN")
+        guard let urlTranslate = URL(string: "https://translation.googleapis.com/language/translate/v2?") else { return }
         
-        guard let url = urlTranslate else { return }
-        var request = URLRequest(url: url)
+        var request = URLRequest(url: urlTranslate)
         request.httpMethod = "POST"
+        
+        let query = language
+        
+        let body = "q=\(query)" + "&source=fr" + "&target=en" + "&format=text" + "&key=\(apiKey)"
+        
+        request.httpBody = body.data(using: .utf8)
         
         let session = URLSession(configuration: .default)
         
@@ -33,19 +48,23 @@ class TranslateService {
                 return
             }
             do {
+                
                 guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                     completion(.failure(.server))
                     print("pas de data")
                     return
                 }
+                
                 guard let responseJson = try?
-                        JSONDecoder().decode(Welcome.self, from: data) else {
+                        JSONDecoder().decode(Translate.self, from: data) else {
                     completion(.failure(.decoding))
                     return
                 }
+                
                 completion(.success(responseJson))
             }
         }
+        
         task.resume()
     }
 }

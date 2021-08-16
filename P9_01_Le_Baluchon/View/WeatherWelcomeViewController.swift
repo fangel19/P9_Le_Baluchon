@@ -9,19 +9,15 @@ import UIKit
 
 class WeatherWelcomeViewController: UIViewController, UITextFieldDelegate {
     
-    
     //MARK: - Outlets
     
     @IBOutlet weak var tempWeather: UILabel!
     @IBOutlet weak var iconWeather: UIImageView!
     @IBOutlet weak var descriptionWeather: UILabel!
-    
     @IBOutlet weak var cityLabel: UILabel!
-    
     @IBOutlet weak var tempWeather2: UILabel!
     @IBOutlet weak var iconWeather2: UIImageView!
     @IBOutlet weak var descriptionWeather2: UILabel!
-    
     @IBOutlet weak var citiesPickerView: UIPickerView!
     
     // MARK: - Properties
@@ -31,8 +27,8 @@ class WeatherWelcomeViewController: UIViewController, UITextFieldDelegate {
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
+        super.viewDidLoad()
         citiesPickerView.delegate = self
         citiesPickerView.dataSource = self
         citiesPickerView.selectRow(0, inComponent: 0, animated: false)
@@ -44,18 +40,21 @@ class WeatherWelcomeViewController: UIViewController, UITextFieldDelegate {
         
         WeatherService.shared.getWeather(city: cities[1]) { result in
             switch result {
+            
             case .success(let weather):
-                
                 DispatchQueue.main.async {
+                    
                     self.tempWeather.text =  String(weather.main.temp.tempInt)
                     self.descriptionWeather.text  =  weather.weather.first?.description
                     self.cityLabel.text = weather.name
                     
                     if let icon = weather.weather.first?.icon {
+                        
                         self.iconWeather.downloaded(from: "https://openweathermap.org/img/wn/\(icon)@2x.png")
                         print("ICI =>", weather.name)
                     }
                 }
+                
             case .failure:
                 
                 self.alertMessage(title: "Erreur", message: "impossible d'afficher la selection, verifier votre connexion")
@@ -68,20 +67,21 @@ class WeatherWelcomeViewController: UIViewController, UITextFieldDelegate {
         
         WeatherService.shared.getWeather(city: cities[citiesPickerView.selectedRow(inComponent: 0)]) { result in
             switch result {
+            
             case .success(let weather):
-                
                 DispatchQueue.main.async {
+                    
                     self.tempWeather2.text = String(weather.main.temp.tempInt)
                     self.descriptionWeather2.text = weather.weather.first?.description
                     
                     if let icon = weather.weather.first?.icon {
+                        
                         self.iconWeather2.downloaded(from: "https://openweathermap.org/img/wn/\(icon)@2x.png")
                         print("=> success")
                     }
-                    
                 }
-            case .failure:
                 
+            case .failure:
                 self.alertMessage(title: "Erreur", message: "Impossible d'afficher la ville, vérifier votre connexion internet")
             }
         }
@@ -94,6 +94,8 @@ class WeatherWelcomeViewController: UIViewController, UITextFieldDelegate {
         return self.present(alertVC, animated: true, completion: nil)
     }
     
+    //    MARK: - Action button validate
+
     @IBAction func validation(_ sender: Any) {
         
         updateWeatherTwo()
@@ -105,18 +107,22 @@ class WeatherWelcomeViewController: UIViewController, UITextFieldDelegate {
 extension WeatherWelcomeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
         return cities.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
         return cities[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
         print(cities[row])
     }
 }

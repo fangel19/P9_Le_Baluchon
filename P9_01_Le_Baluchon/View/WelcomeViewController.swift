@@ -9,9 +9,10 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // MARK: - LifeCycle
 
-        // Do any additional setup after loading the view.
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
     }
 }

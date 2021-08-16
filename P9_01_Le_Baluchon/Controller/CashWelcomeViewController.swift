@@ -13,6 +13,7 @@ class CashWelcomeViewController: UIViewController {
     
     @IBOutlet weak var firstCash: UILabel!
     @IBOutlet weak var firstAmountCash: UITextField! {
+        
         didSet {
             firstAmountCash.addDoneCancelToolbar(onDone: (target: self, action: #selector(doneTappedFirstAmount)))
         }
@@ -20,6 +21,7 @@ class CashWelcomeViewController: UIViewController {
     
     @IBOutlet weak var secondCash: UILabel!
     @IBOutlet weak var secondAmountCash: UITextField! {
+        
         didSet {
             secondAmountCash.addDoneCancelToolbar(onDone: (target: self, action: #selector(doneTappedSecondAmount)))
         }
@@ -65,10 +67,12 @@ class CashWelcomeViewController: UIViewController {
     
     //Display keyboard
     @objc func keyboardWillShow(sender: NSNotification) {
+        
         self.view.frame.origin.y = -100 // Move view 100 points upward
     }
     
     @objc func keyboardWillHide(sender: NSNotification) {
+        
         self.view.frame.origin.y = 0 // Move view to original position
     }
     
@@ -82,6 +86,7 @@ class CashWelcomeViewController: UIViewController {
     }
     
     func cashPickerViewTrue() {
+        
         let selectedCash = self.secondCashPickerView.selectedRow(inComponent: 0)
         let cashList = self.cashName.keys.sorted()
         guard let list = self.cashName[cashList[selectedCash]] else { return }
@@ -93,6 +98,7 @@ class CashWelcomeViewController: UIViewController {
         
         CashService.shared.getCash() { result in
             switch result {
+            
             case .success(let cashResult):
                 DispatchQueue.main.async {
                     
@@ -105,27 +111,36 @@ class CashWelcomeViewController: UIViewController {
                         self.secondCash.text = to
                         
                     } else {
+                        
                         let selectedCash = self.secondCashPickerView.selectedRow(inComponent: 0)
                         let cashList = self.cashName.keys.sorted()
                         guard let list = self.cashName[cashList[selectedCash]] else { return }
+                        
                         self.resultWithTwoDecimal(result: cashResult.convert(value: value, from: list, to: "EUR"), toSecondCash: false)
                     }
                 }
+                
             case .failure(let error):
                 print(error.localizedDescription)
-            //                DispatchQueue.main.async {
-            //                    self.alertMessage(title: "Erreur", message: "impossible d'afficher la monnaie, verifier votre connexion internet")
-            //                }
+                DispatchQueue.main.async {
+                    
+                    self.alertMessage(title: "Erreur", message: "impossible d'afficher la selection, verifier votre connexion")
+                    print("error")
+                }
             }
         }
     }
     //    MARK: - Result with two decimal in firstAmountCash and secondAmountCash
     
     private func resultWithTwoDecimal(result: Double, toSecondCash: Bool) {
+        
         let resultTwoDecimal = String(format: "%.2f", result)
         if !toSecondCash {
+            
             firstAmountCash.text = resultTwoDecimal
+            
         } else {
+            
             secondAmountCash.text = resultTwoDecimal
         }
     }
@@ -141,6 +156,7 @@ class CashWelcomeViewController: UIViewController {
     //    MARK: - Action button validate
     
     @IBAction func changeCash(_ sender: Any) {
+        
         cashPickerViewFalse()
     }
 }
@@ -150,19 +166,22 @@ class CashWelcomeViewController: UIViewController {
 extension CashWelcomeViewController: UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
         return cashName.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
         return cashName.keys.sorted()[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
         print(cashName.keys.sorted()[row])
     }
 }
-

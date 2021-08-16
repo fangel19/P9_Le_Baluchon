@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - WeatherInfo
+
 struct WeatherInfo: Decodable {
     
     let weather: [WeatherElement]
@@ -14,23 +16,28 @@ struct WeatherInfo: Decodable {
     let name: String
 }
 
+// MARK: - WeatherElement
+
 struct WeatherElement: Decodable {
     
     let description: String
     let icon: String
     
     enum CodingKeys: String, CodingKey {
+        
         case description = "description"
         case icon = "icon"
     }
 }
+
+// MARK: - Main
 
 struct Main: Decodable {
     
     let temp: Double
     
     enum CodingKeys: String, CodingKey {
-    
-    case temp
-}
+        
+        case temp
+    }
 }

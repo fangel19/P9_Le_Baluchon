@@ -7,19 +7,29 @@
 
 import Foundation
 
+// MARK: - CashInfo
+
 struct CashInfo: Decodable {
     
     let rates: [String: Double]
 }
 
+// MARK: - Extension
+
 extension CashInfo {
+    
     private func convertFromEuro(value: Double, rates: Double) -> Double {
+        
         return value * rates
     }
+    
     private func convertToEuro(value: Double, rates: Double) -> Double {
+        
         return value / rates
     }
+    
     func convert(value: Double, from: String, to: String) -> Double {
+        
         if from == "EUR" {
             
             let rate = Double((rates[to] ?? 0))
@@ -37,4 +47,3 @@ extension CashInfo {
         }
     }
 }
-
