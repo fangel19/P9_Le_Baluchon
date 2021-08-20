@@ -23,7 +23,7 @@ class CashService {
     
     // MARK: - Call API
 
-    func getCash(completion: @escaping (Result<CashInfo, APIError>) -> Void) {
+    func getCash(_ session: URLSessionProtocol, completion: @escaping (Result<CashInfo, APIError>) -> Void) {
         
         let urlCash = URL(string: "http://data.fixer.io/latest?access_key=69821d275fa932b77bb0f107de2eb4eb")
         
@@ -32,8 +32,6 @@ class CashService {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
-        let session = URLSession(configuration: .default)
-        
         let task = session.dataTask(with: request) { (data, response, error) in
             guard error == nil else { completion(.failure(.server))
                 print("erreur")
@@ -41,7 +39,7 @@ class CashService {
             }
             do {
                 
-                guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                guard let data = data, let response = response as? HTTPURLResponse,  response.statusCode == 200 else {
                     completion(.failure(.server))
                     print("pas de data")
                     return
