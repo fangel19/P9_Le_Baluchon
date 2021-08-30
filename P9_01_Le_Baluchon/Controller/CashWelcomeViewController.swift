@@ -96,7 +96,7 @@ class CashWelcomeViewController: UIViewController {
     
     private func updateCashTwo(to: String, toEuro: Bool) {
         
-        CashService.shared.getCash(URLSession.shared) { result in
+        CashService.shared.getCash() { result in
             switch result {
             
             case .success(let cashResult):

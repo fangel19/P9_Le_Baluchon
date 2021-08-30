@@ -12,7 +12,8 @@ class TranslateService {
     // MARK: - Singleton
     
     static let shared = TranslateService()
-    
+    private init() {}
+
     // MARK: - API Key
 
     private var apiKey = "AIzaSyBjz9BBKSKzzKSpFgxumEXOxIjWzFn1XBc"
@@ -25,7 +26,18 @@ class TranslateService {
         case decoding
     }
     
-    // MARK: - Call API
+    // MARK: - Properties
+    
+    private var task: URLSessionDataTask?
+    
+    var translateSession = URLSession(configuration: .default)
+    
+    init(translateSession: URLSession) {
+
+        self.translateSession = translateSession
+    }
+
+    // MARK: - Method
 
     func postTranslate(language: String, completion: @escaping (Result<Translate, APIError>) -> Void) {
         
@@ -39,10 +51,9 @@ class TranslateService {
         let body = "q=\(query)" + "&source=fr" + "&target=en" + "&format=text" + "&key=\(apiKey)"
         
         request.httpBody = body.data(using: .utf8)
-        
-        let session = URLSession(configuration: .default)
-        
-        let task = session.dataTask(with: request) { (data, response, error) in
+                
+        task?.cancel()
+        task = translateSession.dataTask(with: request) { (data, response, error) in
             guard error == nil else { completion(.failure(.server))
                 print("erreur")
                 return
@@ -65,6 +76,6 @@ class TranslateService {
             }
         }
         
-        task.resume()
+        task?.resume()
     }
 }

@@ -12,7 +12,8 @@ class CashService {
     // MARK: - Singleton
     
     static let shared = CashService()
-    
+    private init() {}
+
     // MARK: - Enum API
 
     enum APIError: Error {
@@ -21,9 +22,20 @@ class CashService {
         case decoding
     }
     
-    // MARK: - Call API
+    // MARK: - Properties
+    
+    private var task: URLSessionDataTask?
+    
+    private var cashSession = URLSession(configuration: .default)
+    
+    init(cashSession: URLSession) {
 
-    func getCash(_ session: URLSessionProtocol, completion: @escaping (Result<CashInfo, APIError>) -> Void) {
+        self.cashSession = cashSession
+    }
+    
+    // MARK: - Method
+
+    func getCash(completionHandler: @escaping (Result<CashInfo, APIError>) -> Void) {
         
         let urlCash = URL(string: "http://data.fixer.io/latest?access_key=69821d275fa932b77bb0f107de2eb4eb")
         
@@ -32,29 +44,30 @@ class CashService {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
-        let task = session.dataTask(with: request) { (data, response, error) in
-            guard error == nil else { completion(.failure(.server))
+        task?.cancel()
+        task = cashSession.dataTask(with: request) { (data, response, error) in
+            guard error == nil else { completionHandler(.failure(.server))
                 print("erreur")
                 return
             }
             do {
                 
                 guard let data = data, let response = response as? HTTPURLResponse,  response.statusCode == 200 else {
-                    completion(.failure(.server))
+                    completionHandler(.failure(.server))
                     print("pas de data")
                     return
                 }
                 
                 guard let responseJson = try?
                         JSONDecoder().decode(CashInfo.self, from: data) else {
-                    completion(.failure(.decoding))
+                    completionHandler(.failure(.decoding))
                     return
                 }
                 
-                completion(.success(responseJson))
+                completionHandler(.success(responseJson))
             }
         }
         
-        task.resume()
+        task?.resume()
     }
 }

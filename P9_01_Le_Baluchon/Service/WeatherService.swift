@@ -12,6 +12,7 @@ class WeatherService {
     // MARK: - Singleton
     
     static let shared = WeatherService()
+    private init() {}
     
     // MARK: - Enum API
 
@@ -21,7 +22,18 @@ class WeatherService {
         case decoding
     }
     
-    // MARK: - Call API
+    // MARK: - Properties
+    
+    private var task: URLSessionDataTask?
+    
+    var weatherSession = URLSession(configuration: .default)
+    
+    init(weatherSession: URLSession) {
+
+        self.weatherSession = weatherSession
+    }
+    
+    // MARK: - Method
 
     func getWeather(city: String, completion: @escaping (Result<WeatherInfo, APIError>) -> Void) {
         
@@ -35,10 +47,8 @@ class WeatherService {
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        
-        let session = URLSession(configuration: .default)
-        
-        let task = session.dataTask(with: request) { (data, response, error) in
+                
+        task = weatherSession.dataTask(with: request) { (data, response, error) in
             guard error ==  nil else { completion(.failure(.server))
                 print("erreur")
                 return
@@ -60,6 +70,6 @@ class WeatherService {
             }
         }
         
-        task.resume()
+        task?.resume()
     }
 }

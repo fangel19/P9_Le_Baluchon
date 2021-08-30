@@ -22,19 +22,15 @@
 		24B59E3F26C6D87000B4959D /* TranslateServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B59E3E26C6D87000B4959D /* TranslateServiceTests.swift */; };
 		24B59E4126C6D89E00B4959D /* WeatherServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B59E4026C6D89E00B4959D /* WeatherServiceTests.swift */; };
 		24B59E4326C6D8B100B4959D /* CashServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B59E4226C6D8B100B4959D /* CashServiceTests.swift */; };
-		24B59E4A26CBE9C500B4959D /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B59E4926CBE9C500B4959D /* URLSessionProtocol.swift */; };
-		24B59E4C26CBF6EF00B4959D /* URLSession -  URLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B59E4B26CBF6EF00B4959D /* URLSession -  URLProtocol.swift */; };
-		24B59E4E26CC042D00B4959D /* URLSession - URLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B59E4D26CC042D00B4959D /* URLSession - URLSessionDataTask.swift */; };
-		24B59E5026CC045D00B4959D /* URLSessionDatask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B59E4F26CC045D00B4959D /* URLSessionDatask.swift */; };
-		24B59E5626CEB3F200B4959D /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B59E5526CEB3F200B4959D /* URLSessionMock.swift */; };
 		24B59E5C26CED27C00B4959D /* CashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B59E5B26CED27C00B4959D /* CashTests.swift */; };
-		24B59E5E26CFF37E00B4959D /* URLProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B59E5D26CFF37D00B4959D /* URLProtocolMock.swift */; };
+		24B59E6126D4043C00B4959D /* Cash.json in Resources */ = {isa = PBXBuildFile; fileRef = 24B59E6026D4043C00B4959D /* Cash.json */; };
+		24B59E8826D6AEA400B4959D /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B59E8726D6AEA400B4959D /* FakeResponseData.swift */; };
+		24B59E8E26D80BA400B4959D /* URLSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B59E8D26D80BA400B4959D /* URLSessionFake.swift */; };
 		24E6E59D268DB79A00B39A95 /* ImageView+AddOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E6E59C268DB79900B39A95 /* ImageView+AddOn.swift */; };
 		24E956BE263C4F2C00C8EEB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E956BD263C4F2C00C8EEB5 /* AppDelegate.swift */; };
 		24E956C5263C4F2C00C8EEB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24E956C3263C4F2C00C8EEB5 /* Main.storyboard */; };
 		24E956C7263C4F3100C8EEB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24E956C6263C4F3100C8EEB5 /* Assets.xcassets */; };
 		24E956CA263C4F3100C8EEB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24E956C8263C4F3100C8EEB5 /* LaunchScreen.storyboard */; };
-		24E956D5263C4F3200C8EEB5 /* P9_01_Le_BaluchonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E956D4263C4F3200C8EEB5 /* P9_01_Le_BaluchonTests.swift */; };
 		24E956E0263C4F3200C8EEB5 /* P9_01_Le_BaluchonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E956DF263C4F3200C8EEB5 /* P9_01_Le_BaluchonUITests.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,13 +67,10 @@
 		24B59E3E26C6D87000B4959D /* TranslateServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateServiceTests.swift; sourceTree = "<group>"; };
 		24B59E4026C6D89E00B4959D /* WeatherServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServiceTests.swift; sourceTree = "<group>"; };
 		24B59E4226C6D8B100B4959D /* CashServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashServiceTests.swift; sourceTree = "<group>"; };
-		24B59E4926CBE9C500B4959D /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
-		24B59E4B26CBF6EF00B4959D /* URLSession -  URLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession -  URLProtocol.swift"; sourceTree = "<group>"; };
-		24B59E4D26CC042D00B4959D /* URLSession - URLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession - URLSessionDataTask.swift"; sourceTree = "<group>"; };
-		24B59E4F26CC045D00B4959D /* URLSessionDatask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDatask.swift; sourceTree = "<group>"; };
-		24B59E5526CEB3F200B4959D /* URLSessionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionMock.swift; sourceTree = "<group>"; };
 		24B59E5B26CED27C00B4959D /* CashTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashTests.swift; sourceTree = "<group>"; };
-		24B59E5D26CFF37D00B4959D /* URLProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolMock.swift; sourceTree = "<group>"; };
+		24B59E6026D4043C00B4959D /* Cash.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Cash.json; sourceTree = "<group>"; };
+		24B59E8726D6AEA400B4959D /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
+		24B59E8D26D80BA400B4959D /* URLSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionFake.swift; sourceTree = "<group>"; };
 		24E6E59C268DB79900B39A95 /* ImageView+AddOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+AddOn.swift"; sourceTree = "<group>"; };
 		24E956BA263C4F2C00C8EEB5 /* P9_01_Le_Baluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = P9_01_Le_Baluchon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24E956BD263C4F2C00C8EEB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,7 +79,6 @@
 		24E956C9263C4F3100C8EEB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		24E956CB263C4F3100C8EEB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24E956D0263C4F3100C8EEB5 /* P9_01_Le_BaluchonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = P9_01_Le_BaluchonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		24E956D4263C4F3200C8EEB5 /* P9_01_Le_BaluchonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P9_01_Le_BaluchonTests.swift; sourceTree = "<group>"; };
 		24E956D6263C4F3200C8EEB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24E956DB263C4F3200C8EEB5 /* P9_01_Le_BaluchonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = P9_01_Le_BaluchonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		24E956DF263C4F3200C8EEB5 /* P9_01_Le_BaluchonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P9_01_Le_BaluchonUITests.swift; sourceTree = "<group>"; };
@@ -138,16 +130,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		24B59E4626CBCF6C00B4959D /* Mock */ = {
+		24B59E8626D6AE4500B4959D /* CashTests */ = {
 			isa = PBXGroup;
 			children = (
-				24B59E4926CBE9C500B4959D /* URLSessionProtocol.swift */,
-				24B59E4B26CBF6EF00B4959D /* URLSession -  URLProtocol.swift */,
-				24B59E4D26CC042D00B4959D /* URLSession - URLSessionDataTask.swift */,
-				24B59E4F26CC045D00B4959D /* URLSessionDatask.swift */,
-				24B59E5D26CFF37D00B4959D /* URLProtocolMock.swift */,
+				24B59E4226C6D8B100B4959D /* CashServiceTests.swift */,
+				24B59E5B26CED27C00B4959D /* CashTests.swift */,
+				24B59E6026D4043C00B4959D /* Cash.json */,
 			);
-			path = Mock;
+			path = CashTests;
 			sourceTree = "<group>";
 		};
 		24E956B1263C4F2C00C8EEB5 = {
@@ -173,7 +163,6 @@
 		24E956BC263C4F2C00C8EEB5 /* P9_01_Le_Baluchon */ = {
 			isa = PBXGroup;
 			children = (
-				24B59E4626CBCF6C00B4959D /* Mock */,
 				248C3CBA26824F93004078F1 /* Extension */,
 				24E956BD263C4F2C00C8EEB5 /* AppDelegate.swift */,
 				24E956CB263C4F3100C8EEB5 /* Info.plist */,
@@ -188,13 +177,12 @@
 		24E956D3263C4F3200C8EEB5 /* P9_01_Le_BaluchonTests */ = {
 			isa = PBXGroup;
 			children = (
-				24E956D4263C4F3200C8EEB5 /* P9_01_Le_BaluchonTests.swift */,
+				24B59E8626D6AE4500B4959D /* CashTests */,
 				24E956D6263C4F3200C8EEB5 /* Info.plist */,
 				24B59E3E26C6D87000B4959D /* TranslateServiceTests.swift */,
 				24B59E4026C6D89E00B4959D /* WeatherServiceTests.swift */,
-				24B59E4226C6D8B100B4959D /* CashServiceTests.swift */,
-				24B59E5526CEB3F200B4959D /* URLSessionMock.swift */,
-				24B59E5B26CED27C00B4959D /* CashTests.swift */,
+				24B59E8726D6AEA400B4959D /* FakeResponseData.swift */,
+				24B59E8D26D80BA400B4959D /* URLSessionFake.swift */,
 			);
 			path = P9_01_Le_BaluchonTests;
 			sourceTree = "<group>";
@@ -352,6 +340,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24B59E6126D4043C00B4959D /* Cash.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,23 +360,18 @@
 			files = (
 				2418260F26736B3200FA39EE /* WeatherWelcomeViewController.swift in Sources */,
 				24E6E59D268DB79A00B39A95 /* ImageView+AddOn.swift in Sources */,
-				24B59E4C26CBF6EF00B4959D /* URLSession -  URLProtocol.swift in Sources */,
 				241826072672463F00FA39EE /* TranslateWelcomeViewController.swift in Sources */,
 				2416950B267A40770086ABAC /* UserWeather.swift in Sources */,
 				2415202026860A6100CDFBF4 /* UserCash.swift in Sources */,
 				241B25D5269373E1005514F1 /* DoubleInt.swift in Sources */,
 				2415201A268609F400CDFBF4 /* TranslateService.swift in Sources */,
-				24B59E5026CC045D00B4959D /* URLSessionDatask.swift in Sources */,
-				24B59E4A26CBE9C500B4959D /* URLSessionProtocol.swift in Sources */,
 				2415201E26860A5500CDFBF4 /* UserTranslate.swift in Sources */,
 				2415201C26860A1A00CDFBF4 /* CashService.swift in Sources */,
 				2482B7B426A1FB3900064B0F /* UITextField+Toolbar.swift in Sources */,
 				248995282677B9380044123D /* WeatherService.swift in Sources */,
 				241826052672457500FA39EE /* CashWelcomeViewController.swift in Sources */,
 				240A6FC12641841700BA9DD5 /* WelcomeViewController.swift in Sources */,
-				24B59E4E26CC042D00B4959D /* URLSession - URLSessionDataTask.swift in Sources */,
 				24E956BE263C4F2C00C8EEB5 /* AppDelegate.swift in Sources */,
-				24B59E5E26CFF37E00B4959D /* URLProtocolMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,10 +381,10 @@
 			files = (
 				24B59E4326C6D8B100B4959D /* CashServiceTests.swift in Sources */,
 				24B59E3F26C6D87000B4959D /* TranslateServiceTests.swift in Sources */,
-				24E956D5263C4F3200C8EEB5 /* P9_01_Le_BaluchonTests.swift in Sources */,
+				24B59E8826D6AEA400B4959D /* FakeResponseData.swift in Sources */,
 				24B59E4126C6D89E00B4959D /* WeatherServiceTests.swift in Sources */,
+				24B59E8E26D80BA400B4959D /* URLSessionFake.swift in Sources */,
 				24B59E5C26CED27C00B4959D /* CashTests.swift in Sources */,
-				24B59E5626CEB3F200B4959D /* URLSessionMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
