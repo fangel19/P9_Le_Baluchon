@@ -17,6 +17,7 @@
 		241826072672463F00FA39EE /* TranslateWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241826062672463F00FA39EE /* TranslateWelcomeViewController.swift */; };
 		2418260F26736B3200FA39EE /* WeatherWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2418260E26736B3200FA39EE /* WeatherWelcomeViewController.swift */; };
 		241B25D5269373E1005514F1 /* DoubleInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241B25D4269373E1005514F1 /* DoubleInt.swift */; };
+		245FDDA026DD6374005CBE34 /* URLTestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245FDD9F26DD6374005CBE34 /* URLTestProtocol.swift */; };
 		2482B7B426A1FB3900064B0F /* UITextField+Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2482B7B326A1FB3900064B0F /* UITextField+Toolbar.swift */; };
 		248995282677B9380044123D /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248995272677B9380044123D /* WeatherService.swift */; };
 		24B59E3F26C6D87000B4959D /* TranslateServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B59E3E26C6D87000B4959D /* TranslateServiceTests.swift */; };
@@ -25,7 +26,6 @@
 		24B59E5C26CED27C00B4959D /* CashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B59E5B26CED27C00B4959D /* CashTests.swift */; };
 		24B59E6126D4043C00B4959D /* Cash.json in Resources */ = {isa = PBXBuildFile; fileRef = 24B59E6026D4043C00B4959D /* Cash.json */; };
 		24B59E8826D6AEA400B4959D /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B59E8726D6AEA400B4959D /* FakeResponseData.swift */; };
-		24B59E8E26D80BA400B4959D /* URLSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B59E8D26D80BA400B4959D /* URLSessionFake.swift */; };
 		24E6E59D268DB79A00B39A95 /* ImageView+AddOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E6E59C268DB79900B39A95 /* ImageView+AddOn.swift */; };
 		24E956BE263C4F2C00C8EEB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E956BD263C4F2C00C8EEB5 /* AppDelegate.swift */; };
 		24E956C5263C4F2C00C8EEB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24E956C3263C4F2C00C8EEB5 /* Main.storyboard */; };
@@ -62,6 +62,7 @@
 		241826062672463F00FA39EE /* TranslateWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TranslateWelcomeViewController.swift; path = P9_01_Le_Baluchon/View/TranslateWelcomeViewController.swift; sourceTree = SOURCE_ROOT; };
 		2418260E26736B3200FA39EE /* WeatherWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeatherWelcomeViewController.swift; path = P9_01_Le_Baluchon/View/WeatherWelcomeViewController.swift; sourceTree = SOURCE_ROOT; };
 		241B25D4269373E1005514F1 /* DoubleInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleInt.swift; sourceTree = "<group>"; };
+		245FDD9F26DD6374005CBE34 /* URLTestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLTestProtocol.swift; sourceTree = "<group>"; };
 		2482B7B326A1FB3900064B0F /* UITextField+Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Toolbar.swift"; sourceTree = "<group>"; };
 		248995272677B9380044123D /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		24B59E3E26C6D87000B4959D /* TranslateServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateServiceTests.swift; sourceTree = "<group>"; };
@@ -70,7 +71,6 @@
 		24B59E5B26CED27C00B4959D /* CashTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashTests.swift; sourceTree = "<group>"; };
 		24B59E6026D4043C00B4959D /* Cash.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Cash.json; sourceTree = "<group>"; };
 		24B59E8726D6AEA400B4959D /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
-		24B59E8D26D80BA400B4959D /* URLSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionFake.swift; sourceTree = "<group>"; };
 		24E6E59C268DB79900B39A95 /* ImageView+AddOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+AddOn.swift"; sourceTree = "<group>"; };
 		24E956BA263C4F2C00C8EEB5 /* P9_01_Le_Baluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = P9_01_Le_Baluchon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24E956BD263C4F2C00C8EEB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -182,7 +182,7 @@
 				24B59E3E26C6D87000B4959D /* TranslateServiceTests.swift */,
 				24B59E4026C6D89E00B4959D /* WeatherServiceTests.swift */,
 				24B59E8726D6AEA400B4959D /* FakeResponseData.swift */,
-				24B59E8D26D80BA400B4959D /* URLSessionFake.swift */,
+				245FDD9F26DD6374005CBE34 /* URLTestProtocol.swift */,
 			);
 			path = P9_01_Le_BaluchonTests;
 			sourceTree = "<group>";
@@ -383,7 +383,7 @@
 				24B59E3F26C6D87000B4959D /* TranslateServiceTests.swift in Sources */,
 				24B59E8826D6AEA400B4959D /* FakeResponseData.swift in Sources */,
 				24B59E4126C6D89E00B4959D /* WeatherServiceTests.swift in Sources */,
-				24B59E8E26D80BA400B4959D /* URLSessionFake.swift in Sources */,
+				245FDDA026DD6374005CBE34 /* URLTestProtocol.swift in Sources */,
 				24B59E5C26CED27C00B4959D /* CashTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,7 +482,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -537,7 +537,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -555,7 +555,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 358ZT2285C;
 				INFOPLIST_FILE = P9_01_Le_Baluchon/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -575,7 +575,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 358ZT2285C;
 				INFOPLIST_FILE = P9_01_Le_Baluchon/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
