@@ -45,7 +45,5 @@ final class URLTestProtocol: URLProtocol {
         }
     }
 
-    override func stopLoading() {
-    }
-    
+    override func stopLoading() {}
 }

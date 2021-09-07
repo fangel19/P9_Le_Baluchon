@@ -1,5 +1,5 @@
 //
-//  CashServiceTests.swift
+//  WeatherServiceTests.swift
 //  P9_01_Le_BaluchonTests
 //
 //  Created by angelique fourny on 13/08/2021.
@@ -8,9 +8,9 @@
 import XCTest
 @testable import P9_01_Le_Baluchon
 
-class MockNetworkCallsTests: XCTestCase {
+class MockNetworkCallsTestsWeather: XCTestCase {
     
-    var cashService: CashService!
+    var weatherService: WeatherService!
     
     override func setUp() {
         super.setUp()
@@ -19,7 +19,7 @@ class MockNetworkCallsTests: XCTestCase {
             
             let response: HTTPURLResponse = FakeResponseData.responseOK
             let error: Error? = nil
-            let data = FakeResponseData.cashCorrectData
+            let data = FakeResponseData.weatherCorrectData
             return (response, data, error)
         }
         
@@ -27,10 +27,10 @@ class MockNetworkCallsTests: XCTestCase {
         configuration.protocolClasses = [URLTestProtocol.self]
         let session = URLSession(configuration: configuration)
         
-        cashService  = CashService(cashSession: session)
+        weatherService  = WeatherService(weatherSession: session)
     }
     
-    func testGetCashShouldPostFailedCallbackIfError() {
+    func testGetWeatherShouldPostFailedCallbackIfError() {
         
         URLTestProtocol.loadingHandler = { request in
             
@@ -44,11 +44,11 @@ class MockNetworkCallsTests: XCTestCase {
         configuration.protocolClasses = [URLTestProtocol.self]
         let session = URLSession(configuration: configuration)
         
-        cashService  = CashService(cashSession: session)
+        weatherService  = WeatherService(weatherSession: session)
         
         let expectation  = XCTestExpectation(description: "Wait for queue change.")
         
-        cashService.getCash { (result) in
+        weatherService.getWeather(city: "Paris") { (result) in
             
             guard case .failure(let error) = result else {
                 XCTFail("fail")
@@ -62,25 +62,7 @@ class MockNetworkCallsTests: XCTestCase {
         wait(for: [expectation], timeout: 1)
     }
     
-    func testGetCashShouldPostFailedCallbackNoData() {
-        
-        
-        //        // Given
-        //        let cashService = CashService(cashSession: URLSessionFake(data: nil, response: nil, error: nil))
-        //        // When
-        //        let expectation = XCTestExpectation(description: "Wait for queue change.")
-        //
-        //        cashService.getCash { (success, cash) in
-        //            // Then
-        //            XCTAssertFalse(success)
-        //            XCTAssertNil(cash)
-        //            expectation.fulfill()
-        //        }
-        //
-        //        wait(for: [expectation], timeout: 0.01)
-    }
-    
-    func testGetCashShouldPostFailedCallbackIfIncorrectData() {
+    func testGetWeatherShouldPostFailedCallbackIfIncorrectData() {
         
         URLTestProtocol.loadingHandler = { request in
             
@@ -94,11 +76,11 @@ class MockNetworkCallsTests: XCTestCase {
         configuration.protocolClasses = [URLTestProtocol.self]
         let session = URLSession(configuration: configuration)
         
-        cashService  = CashService(cashSession: session)
+        weatherService  = WeatherService(weatherSession: session)
         
         let expectation  = XCTestExpectation(description: "Wait for queue change.")
         
-        cashService.getCash { (result) in
+        weatherService.getWeather(city: "Paris") { (result) in
             
             guard case .failure(let error) = result else {
                 XCTFail("fail")
@@ -110,15 +92,16 @@ class MockNetworkCallsTests: XCTestCase {
         }
         
         wait(for: [expectation], timeout: 1)
+        
     }
     
-    func testGetCashShouldPostFailedCallbackIfIncorrectResponse() {
+    func testGetWeatherShouldPostFailedCallbackIfIncorrectResponse() {
         
         URLTestProtocol.loadingHandler = { request in
             
             let response: HTTPURLResponse = FakeResponseData.responseKO
             let error: Error? = nil
-            let data: Data? = FakeResponseData.cashCorrectData
+            let data: Data? = FakeResponseData.weatherCorrectData
             return (response, data, error)
         }
         
@@ -126,11 +109,11 @@ class MockNetworkCallsTests: XCTestCase {
         configuration.protocolClasses = [URLTestProtocol.self]
         let session = URLSession(configuration: configuration)
         
-        cashService  = CashService(cashSession: session)
+        weatherService  = WeatherService(weatherSession: session)
         
         let expectation  = XCTestExpectation(description: "Wait for queue change.")
         
-        cashService.getCash { (result) in
+        weatherService.getWeather(city: "Paris") { (result) in
             
             guard case .failure(let error) = result else {
                 XCTFail("fail")
@@ -144,13 +127,13 @@ class MockNetworkCallsTests: XCTestCase {
         wait(for: [expectation], timeout: 1)
     }
     
-    func testGetCashShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
+    func testGetWeatherShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
         
         URLTestProtocol.loadingHandler = { request in
             
             let response: HTTPURLResponse = FakeResponseData.responseOK
             let error: Error? = nil
-            let data: Data? = FakeResponseData.cashCorrectData
+            let data: Data? = FakeResponseData.weatherCorrectData
             return (response, data, error)
         }
         
@@ -158,18 +141,25 @@ class MockNetworkCallsTests: XCTestCase {
         configuration.protocolClasses = [URLTestProtocol.self]
         let session = URLSession(configuration: configuration)
         
-        cashService  = CashService(cashSession: session)
+        weatherService = WeatherService(weatherSession: session)
         
-        let expectation  = XCTestExpectation(description: "Wait for queue change.")
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
         
-        cashService.getCash { (result) in
+        weatherService.getWeather(city: "Paris") { (result) in
             
-            guard case .success(let cashInfo) = result else {
+            guard case .success(let weatherInfo) = result else {
                 XCTFail("fail")
                 return
             }
             
-            XCTAssertEqual(cashInfo.rates["USD"], 1.17)
+            let weatherTemp: Double = 29.21
+            let weatherIcon: String = "01d"
+            let weatherDescription: String = "ciel dégagé"
+            
+            XCTAssertEqual(weatherIcon, weatherInfo.weather.first?.icon)
+            XCTAssertEqual(weatherTemp, weatherInfo.main.temp)
+            XCTAssertEqual(weatherDescription, weatherInfo.weather.first?.description)
+            
             expectation.fulfill()
         }
         

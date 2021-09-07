@@ -1,5 +1,5 @@
 //
-//  CashServiceTests.swift
+//  TranslateServiceTests.swift
 //  P9_01_Le_BaluchonTests
 //
 //  Created by angelique fourny on 13/08/2021.
@@ -8,9 +8,9 @@
 import XCTest
 @testable import P9_01_Le_Baluchon
 
-class MockNetworkCallsTests: XCTestCase {
+class MockNetworkCallsTestsTranslate: XCTestCase {
     
-    var cashService: CashService!
+    var translateService: TranslateService!
     
     override func setUp() {
         super.setUp()
@@ -19,7 +19,7 @@ class MockNetworkCallsTests: XCTestCase {
             
             let response: HTTPURLResponse = FakeResponseData.responseOK
             let error: Error? = nil
-            let data = FakeResponseData.cashCorrectData
+            let data = FakeResponseData.translateCorrectData
             return (response, data, error)
         }
         
@@ -27,7 +27,7 @@ class MockNetworkCallsTests: XCTestCase {
         configuration.protocolClasses = [URLTestProtocol.self]
         let session = URLSession(configuration: configuration)
         
-        cashService  = CashService(cashSession: session)
+        translateService  = TranslateService(translateSession: session)
     }
     
     func testGetCashShouldPostFailedCallbackIfError() {
@@ -44,11 +44,11 @@ class MockNetworkCallsTests: XCTestCase {
         configuration.protocolClasses = [URLTestProtocol.self]
         let session = URLSession(configuration: configuration)
         
-        cashService  = CashService(cashSession: session)
+        translateService  = TranslateService(translateSession: session)
         
         let expectation  = XCTestExpectation(description: "Wait for queue change.")
         
-        cashService.getCash { (result) in
+        translateService.postTranslate(language: "Bonjour") { (result) in
             
             guard case .failure(let error) = result else {
                 XCTFail("fail")
@@ -94,11 +94,11 @@ class MockNetworkCallsTests: XCTestCase {
         configuration.protocolClasses = [URLTestProtocol.self]
         let session = URLSession(configuration: configuration)
         
-        cashService  = CashService(cashSession: session)
+        translateService  = TranslateService(translateSession: session)
         
         let expectation  = XCTestExpectation(description: "Wait for queue change.")
         
-        cashService.getCash { (result) in
+        translateService.postTranslate(language: "Bonjour") { (result) in
             
             guard case .failure(let error) = result else {
                 XCTFail("fail")
@@ -118,7 +118,7 @@ class MockNetworkCallsTests: XCTestCase {
             
             let response: HTTPURLResponse = FakeResponseData.responseKO
             let error: Error? = nil
-            let data: Data? = FakeResponseData.cashCorrectData
+            let data: Data? = FakeResponseData.translateCorrectData
             return (response, data, error)
         }
         
@@ -126,11 +126,11 @@ class MockNetworkCallsTests: XCTestCase {
         configuration.protocolClasses = [URLTestProtocol.self]
         let session = URLSession(configuration: configuration)
         
-        cashService  = CashService(cashSession: session)
+        translateService  = TranslateService(translateSession: session)
         
         let expectation  = XCTestExpectation(description: "Wait for queue change.")
         
-        cashService.getCash { (result) in
+        translateService.postTranslate(language: "Bonjour") { (result) in
             
             guard case .failure(let error) = result else {
                 XCTFail("fail")
@@ -150,7 +150,7 @@ class MockNetworkCallsTests: XCTestCase {
             
             let response: HTTPURLResponse = FakeResponseData.responseOK
             let error: Error? = nil
-            let data: Data? = FakeResponseData.cashCorrectData
+            let data: Data? = FakeResponseData.translateCorrectData
             return (response, data, error)
         }
         
@@ -158,18 +158,18 @@ class MockNetworkCallsTests: XCTestCase {
         configuration.protocolClasses = [URLTestProtocol.self]
         let session = URLSession(configuration: configuration)
         
-        cashService  = CashService(cashSession: session)
+        translateService  = TranslateService(translateSession: session)
         
         let expectation  = XCTestExpectation(description: "Wait for queue change.")
         
-        cashService.getCash { (result) in
+        translateService.postTranslate(language: "Bonjour") { (result) in
             
-            guard case .success(let cashInfo) = result else {
+            guard case .success(let translateInfo) = result else {
                 XCTFail("fail")
                 return
             }
             
-            XCTAssertEqual(cashInfo.rates["USD"], 1.17)
+            XCTAssertEqual(translateInfo.data.translations[0].translatedText, "Hello")
             expectation.fulfill()
         }
         
