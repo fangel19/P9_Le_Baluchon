@@ -90,7 +90,7 @@
                                                 <color key="textColor" red="0.27369078990000001" green="0.1442582905" blue="0.43447652460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Traduire" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p1X-Cj-cZ8">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Texte à traduire" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p1X-Cj-cZ8">
                                                 <rect key="frame" x="0.0" y="40.5" width="325" height="144"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -116,9 +116,9 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAF-JX-C66">
-                                <rect key="frame" x="137.5" y="557" width="100" height="46"/>
+                                <rect key="frame" x="127.5" y="557" width="120" height="46"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="28"/>
-                                <state key="normal" title="Valider">
+                                <state key="normal" title="Traduire">
                                     <color key="titleColor" red="0.27369078990000001" green="0.1442582905" blue="0.43447652460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -135,6 +135,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wlF-sH-mrb"/>
                         <color key="backgroundColor" red="0.61222368127866489" green="0.2133316713220933" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="wlF-sH-mrb" firstAttribute="trailing" secondItem="yrX-xR-zlg" secondAttribute="trailing" constant="15" id="MxS-X7-EKN"/>
                             <constraint firstItem="eAF-JX-C66" firstAttribute="centerX" secondItem="wlF-sH-mrb" secondAttribute="centerX" id="QaG-G4-HDf"/>
@@ -145,6 +146,9 @@
                             <constraint firstItem="zBO-Lf-Dh9" firstAttribute="top" secondItem="wlF-sH-mrb" secondAttribute="top" constant="65" id="q2C-js-tel"/>
                             <constraint firstItem="wlF-sH-mrb" firstAttribute="trailing" secondItem="zBO-Lf-Dh9" secondAttribute="trailing" constant="25" id="uCO-VC-f5L"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="4ke-Pe-fAW" appends="YES" id="Sim-3W-Zah"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Traduction" id="1Qx-Pe-uh5"/>
                     <connections>
@@ -155,6 +159,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XLu-gr-T92" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="4ke-Pe-fAW">
+                    <connections>
+                        <action selector="userTappedOnScreen:" destination="j8I-fN-Hjq" id="Ore-uP-jBJ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-100" y="1542.2788605697153"/>
         </scene>
@@ -223,9 +232,9 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFp-pu-1eK">
-                                <rect key="frame" x="137.5" y="557" width="100" height="46"/>
+                                <rect key="frame" x="120.5" y="557" width="134" height="46"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="28"/>
-                                <state key="normal" title="Valider">
+                                <state key="normal" title="Convertir">
                                     <color key="titleColor" red="0.016658058390000001" green="0.33348807689999999" blue="0.16214936969999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>

@@ -54,30 +54,12 @@ class MockNetworkCallsTestsTranslate: XCTestCase {
                 XCTFail("fail")
                 return
             }
-            
+
             XCTAssertNotNil(error)
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 1)
-    }
-    
-    func testGetCashShouldPostFailedCallbackNoData() {
-        
-        
-        //        // Given
-        //        let cashService = CashService(cashSession: URLSessionFake(data: nil, response: nil, error: nil))
-        //        // When
-        //        let expectation = XCTestExpectation(description: "Wait for queue change.")
-        //
-        //        cashService.getCash { (success, cash) in
-        //            // Then
-        //            XCTAssertFalse(success)
-        //            XCTAssertNil(cash)
-        //            expectation.fulfill()
-        //        }
-        //
-        //        wait(for: [expectation], timeout: 0.01)
+        wait(for: [expectation], timeout: 2)
     }
     
     func testGetCashShouldPostFailedCallbackIfIncorrectData() {
@@ -109,7 +91,7 @@ class MockNetworkCallsTestsTranslate: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: 2)
     }
     
     func testGetCashShouldPostFailedCallbackIfIncorrectResponse() {
@@ -141,7 +123,7 @@ class MockNetworkCallsTestsTranslate: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: 2)
     }
     
     func testGetCashShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
@@ -173,6 +155,6 @@ class MockNetworkCallsTestsTranslate: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: 2)
     }
 }

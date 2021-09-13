@@ -33,18 +33,10 @@
 		24E956C5263C4F2C00C8EEB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24E956C3263C4F2C00C8EEB5 /* Main.storyboard */; };
 		24E956C7263C4F3100C8EEB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24E956C6263C4F3100C8EEB5 /* Assets.xcassets */; };
 		24E956CA263C4F3100C8EEB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24E956C8263C4F3100C8EEB5 /* LaunchScreen.storyboard */; };
-		24E956E0263C4F3200C8EEB5 /* P9_01_Le_BaluchonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E956DF263C4F3200C8EEB5 /* P9_01_Le_BaluchonUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		24E956D1263C4F3200C8EEB5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 24E956B2263C4F2C00C8EEB5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 24E956B9263C4F2C00C8EEB5;
-			remoteInfo = P9_01_Le_Baluchon;
-		};
-		24E956DC263C4F3200C8EEB5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 24E956B2263C4F2C00C8EEB5 /* Project object */;
 			proxyType = 1;
@@ -84,9 +76,6 @@
 		24E956CB263C4F3100C8EEB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24E956D0263C4F3100C8EEB5 /* P9_01_Le_BaluchonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = P9_01_Le_BaluchonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		24E956D6263C4F3200C8EEB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		24E956DB263C4F3200C8EEB5 /* P9_01_Le_BaluchonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = P9_01_Le_BaluchonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		24E956DF263C4F3200C8EEB5 /* P9_01_Le_BaluchonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P9_01_Le_BaluchonUITests.swift; sourceTree = "<group>"; };
-		24E956E1263C4F3200C8EEB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,13 +87,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		24E956CD263C4F3100C8EEB5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		24E956D8263C4F3200C8EEB5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -167,7 +149,6 @@
 			children = (
 				24E956BC263C4F2C00C8EEB5 /* P9_01_Le_Baluchon */,
 				24E956D3263C4F3200C8EEB5 /* P9_01_Le_BaluchonTests */,
-				24E956DE263C4F3200C8EEB5 /* P9_01_Le_BaluchonUITests */,
 				24E956BB263C4F2C00C8EEB5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -177,7 +158,6 @@
 			children = (
 				24E956BA263C4F2C00C8EEB5 /* P9_01_Le_Baluchon.app */,
 				24E956D0263C4F3100C8EEB5 /* P9_01_Le_BaluchonTests.xctest */,
-				24E956DB263C4F3200C8EEB5 /* P9_01_Le_BaluchonUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -207,15 +187,6 @@
 				245FDD9F26DD6374005CBE34 /* URLTestProtocol.swift */,
 			);
 			path = P9_01_Le_BaluchonTests;
-			sourceTree = "<group>";
-		};
-		24E956DE263C4F3200C8EEB5 /* P9_01_Le_BaluchonUITests */ = {
-			isa = PBXGroup;
-			children = (
-				24E956DF263C4F3200C8EEB5 /* P9_01_Le_BaluchonUITests.swift */,
-				24E956E1263C4F3200C8EEB5 /* Info.plist */,
-			);
-			path = P9_01_Le_BaluchonUITests;
 			sourceTree = "<group>";
 		};
 		24E956EF263C50F000C8EEB5 /* Controller */ = {
@@ -287,24 +258,6 @@
 			productReference = 24E956D0263C4F3100C8EEB5 /* P9_01_Le_BaluchonTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		24E956DA263C4F3200C8EEB5 /* P9_01_Le_BaluchonUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 24E956EA263C4F3200C8EEB5 /* Build configuration list for PBXNativeTarget "P9_01_Le_BaluchonUITests" */;
-			buildPhases = (
-				24E956D7263C4F3200C8EEB5 /* Sources */,
-				24E956D8263C4F3200C8EEB5 /* Frameworks */,
-				24E956D9263C4F3200C8EEB5 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				24E956DD263C4F3200C8EEB5 /* PBXTargetDependency */,
-			);
-			name = P9_01_Le_BaluchonUITests;
-			productName = P9_01_Le_BaluchonUITests;
-			productReference = 24E956DB263C4F3200C8EEB5 /* P9_01_Le_BaluchonUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -318,10 +271,6 @@
 						CreatedOnToolsVersion = 12.5;
 					};
 					24E956CF263C4F3100C8EEB5 = {
-						CreatedOnToolsVersion = 12.5;
-						TestTargetID = 24E956B9263C4F2C00C8EEB5;
-					};
-					24E956DA263C4F3200C8EEB5 = {
 						CreatedOnToolsVersion = 12.5;
 						TestTargetID = 24E956B9263C4F2C00C8EEB5;
 					};
@@ -342,7 +291,6 @@
 			targets = (
 				24E956B9263C4F2C00C8EEB5 /* P9_01_Le_Baluchon */,
 				24E956CF263C4F3100C8EEB5 /* P9_01_Le_BaluchonTests */,
-				24E956DA263C4F3200C8EEB5 /* P9_01_Le_BaluchonUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -365,13 +313,6 @@
 				24AAD46B26E668B3007C5766 /* Weather.json in Resources */,
 				24AAD46D26E6766F007C5766 /* Translate.json in Resources */,
 				24B59E6126D4043C00B4959D /* Cash.json in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		24E956D9263C4F3200C8EEB5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,14 +353,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		24E956D7263C4F3200C8EEB5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				24E956E0263C4F3200C8EEB5 /* P9_01_Le_BaluchonUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -427,11 +360,6 @@
 			isa = PBXTargetDependency;
 			target = 24E956B9263C4F2C00C8EEB5 /* P9_01_Le_Baluchon */;
 			targetProxy = 24E956D1263C4F3200C8EEB5 /* PBXContainerItemProxy */;
-		};
-		24E956DD263C4F3200C8EEB5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 24E956B9263C4F2C00C8EEB5 /* P9_01_Le_Baluchon */;
-			targetProxy = 24E956DC263C4F3200C8EEB5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -655,46 +583,6 @@
 			};
 			name = Release;
 		};
-		24E956EB263C4F3200C8EEB5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 358ZT2285C;
-				INFOPLIST_FILE = P9_01_Le_BaluchonUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "fr.angelique.fourny.P9-01-Le-BaluchonUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = P9_01_Le_Baluchon;
-			};
-			name = Debug;
-		};
-		24E956EC263C4F3200C8EEB5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 358ZT2285C;
-				INFOPLIST_FILE = P9_01_Le_BaluchonUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "fr.angelique.fourny.P9-01-Le-BaluchonUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = P9_01_Le_Baluchon;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -721,15 +609,6 @@
 			buildConfigurations = (
 				24E956E8263C4F3200C8EEB5 /* Debug */,
 				24E956E9263C4F3200C8EEB5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		24E956EA263C4F3200C8EEB5 /* Build configuration list for PBXNativeTarget "P9_01_Le_BaluchonUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				24E956EB263C4F3200C8EEB5 /* Debug */,
-				24E956EC263C4F3200C8EEB5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

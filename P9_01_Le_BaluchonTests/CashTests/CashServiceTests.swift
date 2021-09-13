@@ -59,25 +59,7 @@ class MockNetworkCallsTests: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 1)
-    }
-    
-    func testGetCashShouldPostFailedCallbackNoData() {
-        
-        
-        //        // Given
-        //        let cashService = CashService(cashSession: URLSessionFake(data: nil, response: nil, error: nil))
-        //        // When
-        //        let expectation = XCTestExpectation(description: "Wait for queue change.")
-        //
-        //        cashService.getCash { (success, cash) in
-        //            // Then
-        //            XCTAssertFalse(success)
-        //            XCTAssertNil(cash)
-        //            expectation.fulfill()
-        //        }
-        //
-        //        wait(for: [expectation], timeout: 0.01)
+        wait(for: [expectation], timeout: 2)
     }
     
     func testGetCashShouldPostFailedCallbackIfIncorrectData() {
@@ -109,7 +91,7 @@ class MockNetworkCallsTests: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: 2)
     }
     
     func testGetCashShouldPostFailedCallbackIfIncorrectResponse() {
@@ -141,7 +123,7 @@ class MockNetworkCallsTests: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: 2)
     }
     
     func testGetCashShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
@@ -170,9 +152,12 @@ class MockNetworkCallsTests: XCTestCase {
             }
             
             XCTAssertEqual(cashInfo.rates["USD"], 1.17)
+            XCTAssertEqual(cashInfo.rates["EUR"], 1)
+            XCTAssertEqual(cashInfo.convert(value: 2, from: "EUR", to: "USD"), 2.34)
+            XCTAssertEqual(cashInfo.convert(value: 10, from: "USD", to: "EUR"), 11.7)
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: 2)
     }
 }

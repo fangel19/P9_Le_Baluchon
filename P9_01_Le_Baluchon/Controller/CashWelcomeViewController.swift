@@ -102,15 +102,18 @@ class CashWelcomeViewController: UIViewController {
             case .success(let cashResult):
                 DispatchQueue.main.async {
                     
-                    guard let text = self.firstAmountCash.text, let value = Double(text)
-                    else { return }
-                    
                     if !toEuro {
+                        
+                        guard let text = self.firstAmountCash.text, let value = Double(text)
+                        else { return }
                         
                         self.resultWithTwoDecimal(result: cashResult.convert(value: value, from: "EUR", to: to), toSecondCash: true)
                         self.secondCash.text = to
                         
                     } else {
+                        
+                        guard let text = self.secondAmountCash.text, let value = Double(text)
+                        else { return }
                         
                         let selectedCash = self.secondCashPickerView.selectedRow(inComponent: 0)
                         let cashList = self.cashName.keys.sorted()
@@ -144,6 +147,7 @@ class CashWelcomeViewController: UIViewController {
             secondAmountCash.text = resultTwoDecimal
         }
     }
+    
     //    MARK: - Alert message
     
     private func alertMessage(title: String, message: String) {
@@ -153,11 +157,11 @@ class CashWelcomeViewController: UIViewController {
         present(alertVC, animated: true, completion: nil)
     }
     
-    //    MARK: - Action button validate
+    //    MARK: - Action button conversion
     
     @IBAction func changeCash(_ sender: Any) {
         
-        cashPickerViewFalse()
+        secondAmountCash.isEditing ? cashPickerViewTrue() : cashPickerViewFalse()
     }
 }
 

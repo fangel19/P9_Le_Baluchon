@@ -15,6 +15,9 @@ class TranslateWelcomeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var firstTappedLanguage: UITextField!
     @IBOutlet weak var secondLanguage: UIStackView!
     @IBOutlet weak var secondTranslateLanguage: UITextField!
+    @IBAction func userTappedOnScreen(_ sender: Any) {
+        dismissKeyboard()
+    }
     
     // MARK: - LifeCycle
 
@@ -22,6 +25,11 @@ class TranslateWelcomeViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         firstTappedLanguage.delegate = self
         secondTranslateLanguage.delegate = self
+    }
+
+    // Function to dismiss the keyboard
+    private func dismissKeyboard() {
+        firstTappedLanguage.resignFirstResponder()
     }
     
     private func updateLanguage() {
@@ -57,10 +65,10 @@ class TranslateWelcomeViewController: UIViewController, UITextFieldDelegate {
         present(alertVC, animated: true, completion: nil)
     }
     
-    //    MARK: - Action button validate
+    //    MARK: - Action button translate
     
     @IBAction func translate(_ sender: Any) {
-        
+
         updateLanguage()
     }
 }

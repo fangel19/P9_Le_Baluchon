@@ -37,8 +37,9 @@ final class URLTestProtocol: URLProtocol {
             client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
             client?.urlProtocol(self, didLoad: data)
             client?.urlProtocolDidFinishLoading(self)
-        }
-        else {
+            
+        } else {
+            
             class ProtocolError: Error {}
             let protocolError = ProtocolError()
             client?.urlProtocol(self, didFailWithError: protocolError)

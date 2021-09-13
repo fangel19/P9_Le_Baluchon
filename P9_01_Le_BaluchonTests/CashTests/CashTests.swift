@@ -12,9 +12,9 @@ class CashTests: XCTestCase {
     
     let cash =  CashInfo(rates: ["USD" : 1.17])
     
-    func testCashConvertResultItsCorrect() {
+    func testCashConvertResultItsCorrectFromEUR() {
         
-        let result =  cash.convert(value: 1, from: "EUR", to: "USD")
-        XCTAssertEqual(result, 1.17)
+        let result =  cash.convert(value: 2, from: "EUR", to: "USD")
+        XCTAssertEqual(result, 2.34)
     }
 }

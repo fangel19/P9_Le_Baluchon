@@ -59,7 +59,7 @@ class MockNetworkCallsTestsWeather: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: 2)
     }
     
     func testGetWeatherShouldPostFailedCallbackIfIncorrectData() {
@@ -91,7 +91,7 @@ class MockNetworkCallsTestsWeather: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: 2)
         
     }
     
@@ -124,7 +124,7 @@ class MockNetworkCallsTestsWeather: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: 2)
     }
     
     func testGetWeatherShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
@@ -152,17 +152,13 @@ class MockNetworkCallsTestsWeather: XCTestCase {
                 return
             }
             
-            let weatherTemp: Double = 29.21
-            let weatherIcon: String = "01d"
-            let weatherDescription: String = "ciel dégagé"
-            
-            XCTAssertEqual(weatherIcon, weatherInfo.weather.first?.icon)
-            XCTAssertEqual(weatherTemp, weatherInfo.main.temp)
-            XCTAssertEqual(weatherDescription, weatherInfo.weather.first?.description)
-            
+            XCTAssertEqual(weatherInfo.name, "Paris")
+            XCTAssertEqual(weatherInfo.weather.first?.icon, "01d")
+            XCTAssertEqual(weatherInfo.main.temp, 29.21)
+            XCTAssertEqual(weatherInfo.weather.first?.description, "ciel dégagé")
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: 6)
     }
 }

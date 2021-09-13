@@ -87,11 +87,13 @@ class WeatherWelcomeViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    //    MARK: - Alert message
+    
     private func alertMessage(title: String, message: String) {
         
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        return self.present(alertVC, animated: true, completion: nil)
+        present(alertVC, animated: true, completion: nil)
     }
     
     //    MARK: - Action button validate
