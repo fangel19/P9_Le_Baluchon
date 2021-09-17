@@ -18,6 +18,11 @@ class TranslateWelcomeViewController: UIViewController, UITextFieldDelegate {
     @IBAction func userTappedOnScreen(_ sender: Any) {
         dismissKeyboard()
     }
+    @IBOutlet weak var validateButton: UIButton!
+    
+    // MARK: - Properties
+        
+    private var spinner = UIActivityIndicatorView(style: .whiteLarge)
     
     // MARK: - LifeCycle
 
@@ -25,6 +30,34 @@ class TranslateWelcomeViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         firstTappedLanguage.delegate = self
         secondTranslateLanguage.delegate = self
+        setUpSpinner()
+    }
+    
+    // Loading switch validation button
+    private func setUpSpinner() {
+        
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(spinner)
+        
+        spinner.centerXAnchor.constraint(equalTo: validateButton.centerXAnchor).isActive = true
+        spinner.centerYAnchor.constraint(equalTo: validateButton.centerYAnchor).isActive = true
+    }
+    
+    private func loadingLayout(isActive: Bool) {
+        
+        if isActive {
+            
+            spinner.startAnimating()
+            
+        } else {
+            
+            spinner.stopAnimating()
+        }
+    }
+    
+    private func loadingButton(show: Bool) {
+        
+        self.validateButton.isHidden = show
     }
 
     // Function to dismiss the keyboard
@@ -34,22 +67,27 @@ class TranslateWelcomeViewController: UIViewController, UITextFieldDelegate {
     
     private func updateLanguage() {
         
+        loadingLayout(isActive: true)
+        loadingButton(show: true)
+        
         guard self.firstTappedLanguage.text != nil else { return }
         
-        TranslateService.shared.postTranslate(language: firstTappedLanguage.text!) { result in
+        TranslateService.shared.postTranslate(language: firstTappedLanguage.text!) { [weak self] result in
             switch result {
             
             case .success(let translateResult):
                 DispatchQueue.main.async {
                     
-                    self.secondTranslateLanguage.text = translateResult.data.translations[0].translatedText
+                    self?.loadingLayout(isActive: false)
+                    self?.loadingButton(show: false)
+                    self?.secondTranslateLanguage.text = translateResult.data.translations[0].translatedText
                 }
                 
             case .failure(let error):
                 print(error.localizedDescription)
                 DispatchQueue.main.async {
                     
-                    self.alertMessage(title: "Erreur", message: "impossible d'afficher la selection, verifier votre connexion")
+                    self?.alertMessage(title: "Erreur", message: "impossible d'afficher la selection, verifier votre connexion")
                     print("error")
                 }
             }

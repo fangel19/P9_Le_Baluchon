@@ -154,7 +154,7 @@ class MockNetworkCallsTests: XCTestCase {
             XCTAssertEqual(cashInfo.rates["USD"], 1.17)
             XCTAssertEqual(cashInfo.rates["EUR"], 1)
             XCTAssertEqual(cashInfo.convert(value: 2, from: "EUR", to: "USD"), 2.34)
-            XCTAssertEqual(cashInfo.convert(value: 10, from: "USD", to: "EUR"), 11.7)
+            XCTAssertEqual(cashInfo.convert(value: 2.34, from: "USD", to: "EUR"), 2)
             expectation.fulfill()
         }
         

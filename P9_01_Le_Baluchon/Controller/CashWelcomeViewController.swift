@@ -28,6 +28,7 @@ class CashWelcomeViewController: UIViewController {
     }
     
     @IBOutlet weak var secondCashPickerView: UIPickerView!
+    @IBOutlet weak var validateButton: UIButton!
     
     //    MARK: - Properties
     
@@ -36,6 +37,8 @@ class CashWelcomeViewController: UIViewController {
         "Dollar": "USD",
         "Livre sterling": "GBP",
         "Yen": "JPY"]
+    
+    private var spinner = UIActivityIndicatorView(style: .whiteLarge)
     
     //    MARK: - LifeCycle
     
@@ -49,8 +52,36 @@ class CashWelcomeViewController: UIViewController {
         secondCashPickerView.selectRow(0, inComponent: 0, animated: false)
         firstAmountCash.delegate = self
         cashPickerViewFalse()
+        setUpSpinner()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name:UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name:UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    // Loading switch validation button
+    private func setUpSpinner() {
+        
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(spinner)
+        
+        spinner.centerXAnchor.constraint(equalTo: validateButton.centerXAnchor).isActive = true
+        spinner.centerYAnchor.constraint(equalTo: validateButton.centerYAnchor).isActive = true
+    }
+    
+    private func loadingLayout(isActive: Bool) {
+        
+        if isActive {
+            
+            spinner.startAnimating()
+            
+        } else {
+            
+            spinner.stopAnimating()
+        }
+    }
+    
+    private func loadingButton(show: Bool) {
+        
+        self.validateButton.isHidden = show
     }
     
     @objc func doneTappedFirstAmount() {
@@ -96,30 +127,36 @@ class CashWelcomeViewController: UIViewController {
     
     private func updateCashTwo(to: String, toEuro: Bool) {
         
-        CashService.shared.getCash() { result in
+        loadingLayout(isActive: true)
+        loadingButton(show: true)
+        
+        CashService.shared.getCash() { [weak self] result in
             switch result {
             
             case .success(let cashResult):
                 DispatchQueue.main.async {
                     
+                    self?.loadingLayout(isActive: false)
+                    self?.loadingButton(show: false)
+                    
                     if !toEuro {
                         
-                        guard let text = self.firstAmountCash.text, let value = Double(text)
+                        guard let text = self?.firstAmountCash.text, let value = Double(text)
                         else { return }
                         
-                        self.resultWithTwoDecimal(result: cashResult.convert(value: value, from: "EUR", to: to), toSecondCash: true)
-                        self.secondCash.text = to
+                        self?.resultWithTwoDecimal(result: cashResult.convert(value: value, from: "EUR", to: to), toSecondCash: true)
+                        self?.secondCash.text = to
                         
                     } else {
                         
-                        guard let text = self.secondAmountCash.text, let value = Double(text)
+                        guard let text = self?.secondAmountCash.text, let value = Double(text)
                         else { return }
                         
-                        let selectedCash = self.secondCashPickerView.selectedRow(inComponent: 0)
-                        let cashList = self.cashName.keys.sorted()
-                        guard let list = self.cashName[cashList[selectedCash]] else { return }
+                        let selectedCash = self?.secondCashPickerView.selectedRow(inComponent: 0)
+                        let cashList = self?.cashName.keys.sorted()
+                        guard let list = self?.cashName[cashList![selectedCash!]] else { return }
                         
-                        self.resultWithTwoDecimal(result: cashResult.convert(value: value, from: list, to: "EUR"), toSecondCash: false)
+                        self?.resultWithTwoDecimal(result: cashResult.convert(value: value, from: list, to: "EUR"), toSecondCash: false)
                     }
                 }
                 
@@ -127,7 +164,7 @@ class CashWelcomeViewController: UIViewController {
                 print(error.localizedDescription)
                 DispatchQueue.main.async {
                     
-                    self.alertMessage(title: "Erreur", message: "impossible d'afficher la selection, verifier votre connexion")
+                    self?.alertMessage(title: "Erreur", message: "impossible d'afficher la selection, verifier votre connexion")
                     print("error")
                 }
             }

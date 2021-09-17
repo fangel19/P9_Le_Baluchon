@@ -115,7 +115,7 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAF-JX-C66">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAF-JX-C66" userLabel="Validate Button">
                                 <rect key="frame" x="127.5" y="557" width="120" height="46"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="28"/>
                                 <state key="normal" title="Traduire">
@@ -137,6 +137,7 @@
                         <color key="backgroundColor" red="0.61222368127866489" green="0.2133316713220933" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="eAF-JX-C66" firstAttribute="centerX" secondItem="s0o-Os-6C6" secondAttribute="centerX" id="Gbw-1c-WiA"/>
                             <constraint firstItem="wlF-sH-mrb" firstAttribute="trailing" secondItem="yrX-xR-zlg" secondAttribute="trailing" constant="15" id="MxS-X7-EKN"/>
                             <constraint firstItem="eAF-JX-C66" firstAttribute="centerX" secondItem="wlF-sH-mrb" secondAttribute="centerX" id="QaG-G4-HDf"/>
                             <constraint firstItem="zBO-Lf-Dh9" firstAttribute="leading" secondItem="wlF-sH-mrb" secondAttribute="leading" constant="25" id="Zae-RP-v6b"/>
@@ -156,6 +157,7 @@
                         <outlet property="firstTappedLanguage" destination="p1X-Cj-cZ8" id="SCA-Sm-OiS"/>
                         <outlet property="secondLanguage" destination="Wpt-sf-HFA" id="jXm-TW-0Zg"/>
                         <outlet property="secondTranslateLanguage" destination="HNk-8D-qO3" id="gQp-I6-drI"/>
+                        <outlet property="validateButton" destination="eAF-JX-C66" id="LKg-uS-UzC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XLu-gr-T92" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -224,13 +226,6 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baluchon1024monnaie" translatesAutoresizingMaskIntoConstraints="NO" id="Pdc-bn-p8p">
-                                <rect key="frame" x="270" y="59" width="90" height="90"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Pdc-bn-p8p" secondAttribute="height" multiplier="1:1" id="kA6-F9-zR1"/>
-                                    <constraint firstAttribute="width" constant="90" id="z0P-Tm-mip"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFp-pu-1eK">
                                 <rect key="frame" x="120.5" y="557" width="134" height="46"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="28"/>
@@ -241,6 +236,13 @@
                                     <action selector="changeCash:" destination="gxe-Lb-x5Y" eventType="touchUpInside" id="upl-Db-M1p"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baluchon1024monnaie" translatesAutoresizingMaskIntoConstraints="NO" id="Pdc-bn-p8p">
+                                <rect key="frame" x="270" y="59" width="90" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Pdc-bn-p8p" secondAttribute="height" multiplier="1:1" id="kA6-F9-zR1"/>
+                                    <constraint firstAttribute="width" constant="90" id="z0P-Tm-mip"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qsh-kR-gAo"/>
                         <color key="backgroundColor" red="0.0" green="0.64655887379999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -262,6 +264,7 @@
                         <outlet property="secondAmountCash" destination="6WO-mK-ELh" id="VWa-dM-SGJ"/>
                         <outlet property="secondCash" destination="bzT-cd-Pvy" id="u90-zc-rQB"/>
                         <outlet property="secondCashPickerView" destination="kEV-Qt-xqo" id="FHE-fj-2Fw"/>
+                        <outlet property="validateButton" destination="KFp-pu-1eK" id="We5-W6-I5l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dyk-u9-2o2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -399,6 +402,7 @@
                         <outlet property="iconWeather2" destination="UOU-3f-8UR" id="vQp-pk-D0S"/>
                         <outlet property="tempWeather" destination="DR6-wm-9LT" id="Yds-sG-DML"/>
                         <outlet property="tempWeather2" destination="Eu9-qr-pGf" id="HBO-g2-5IM"/>
+                        <outlet property="validateButton" destination="sDh-sc-d2r" id="6BX-td-uwn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f7b-8U-eHf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
