@@ -96,6 +96,7 @@ class CashWelcomeViewController: UIViewController {
         self.view.frame.origin.y = 0 // Move view to original position
     }
     
+    // Choice of conversion for the first or second frame
     @objc func doneTappedFirstAmount() {
         
         cashPickerViewFalse()
