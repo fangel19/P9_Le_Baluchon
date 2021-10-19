@@ -50,6 +50,7 @@ class WeatherWelcomeViewController: UIViewController, UITextFieldDelegate {
         spinner.centerYAnchor.constraint(equalTo: validateButton.centerYAnchor).isActive = true
     }
     
+    // Loading animation
     private func loadingLayout(isActive: Bool) {
         
         if isActive {
