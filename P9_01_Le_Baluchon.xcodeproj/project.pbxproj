@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		240A6FC12641841700BA9DD5 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240A6FC02641841700BA9DD5 /* WelcomeViewController.swift */; };
 		2415201A268609F400CDFBF4 /* TranslateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24152019268609F300CDFBF4 /* TranslateService.swift */; };
 		2415201C26860A1A00CDFBF4 /* CashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2415201B26860A1A00CDFBF4 /* CashService.swift */; };
 		2415201E26860A5500CDFBF4 /* UserTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2415201D26860A5500CDFBF4 /* UserTranslate.swift */; };
@@ -46,7 +45,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		240A6FC02641841700BA9DD5 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = P9_01_Le_Baluchon/View/WelcomeViewController.swift; sourceTree = SOURCE_ROOT; };
 		24152019268609F300CDFBF4 /* TranslateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateService.swift; sourceTree = "<group>"; };
 		2415201B26860A1A00CDFBF4 /* CashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashService.swift; sourceTree = "<group>"; };
 		2415201D26860A5500CDFBF4 /* UserTranslate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTranslate.swift; sourceTree = "<group>"; };
@@ -194,7 +192,6 @@
 			children = (
 				2418260E26736B3200FA39EE /* WeatherWelcomeViewController.swift */,
 				241826062672463F00FA39EE /* TranslateWelcomeViewController.swift */,
-				240A6FC02641841700BA9DD5 /* WelcomeViewController.swift */,
 				241826042672457500FA39EE /* CashWelcomeViewController.swift */,
 			);
 			path = Controller;
@@ -335,7 +332,6 @@
 				2482B7B426A1FB3900064B0F /* UITextField+Toolbar.swift in Sources */,
 				248995282677B9380044123D /* WeatherService.swift in Sources */,
 				241826052672457500FA39EE /* CashWelcomeViewController.swift in Sources */,
-				240A6FC12641841700BA9DD5 /* WelcomeViewController.swift in Sources */,
 				24E956BE263C4F2C00C8EEB5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

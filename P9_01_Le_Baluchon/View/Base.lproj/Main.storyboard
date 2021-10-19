@@ -153,9 +153,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Traduction" id="1Qx-Pe-uh5"/>
                     <connections>
-                        <outlet property="firstLanguage" destination="76O-hm-miE" id="1Ps-pe-B53"/>
                         <outlet property="firstTappedLanguage" destination="p1X-Cj-cZ8" id="SCA-Sm-OiS"/>
-                        <outlet property="secondLanguage" destination="Wpt-sf-HFA" id="jXm-TW-0Zg"/>
                         <outlet property="secondTranslateLanguage" destination="HNk-8D-qO3" id="gQp-I6-drI"/>
                         <outlet property="validateButton" destination="eAF-JX-C66" id="LKg-uS-UzC"/>
                     </connections>

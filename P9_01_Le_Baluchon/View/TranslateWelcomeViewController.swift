@@ -11,9 +11,7 @@ class TranslateWelcomeViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: - Outlets
 
-    @IBOutlet weak var firstLanguage: UILabel!
     @IBOutlet weak var firstTappedLanguage: UITextField!
-    @IBOutlet weak var secondLanguage: UIStackView!
     @IBOutlet weak var secondTranslateLanguage: UITextField!
     @IBAction func userTappedOnScreen(_ sender: Any) {
         dismissKeyboard()

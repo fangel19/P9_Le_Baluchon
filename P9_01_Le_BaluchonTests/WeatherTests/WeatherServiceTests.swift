@@ -159,6 +159,6 @@ class MockNetworkCallsTestsWeather: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 6)
+        wait(for: [expectation], timeout: 2)
     }
 }
