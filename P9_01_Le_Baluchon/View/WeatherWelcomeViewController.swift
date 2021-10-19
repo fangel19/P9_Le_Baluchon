@@ -87,10 +87,13 @@ class WeatherWelcomeViewController: UIViewController, UITextFieldDelegate {
                     }
                 }
                 
-            case .failure:
-                
-                self?.alertMessage(title: "Erreur", message: "impossible d'afficher la selection, verifier votre connexion")
-                print("error")
+            case .failure(let error):
+                print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    
+                    self?.alertMessage(title: "Erreur", message: "impossible d'afficher la selection, verifier votre connexion")
+                    print("error")
+                }
             }
         }
     }
@@ -118,8 +121,13 @@ class WeatherWelcomeViewController: UIViewController, UITextFieldDelegate {
                     }
                 }
                 
-            case .failure:
-                self?.alertMessage(title: "Erreur", message: "Impossible d'afficher la ville, vérifier votre connexion internet")
+            case .failure(let error):
+                print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    
+                    self?.alertMessage(title: "Erreur", message: "impossible d'afficher la selection, verifier votre connexion")
+                    print("error")
+                }
             }
         }
     }

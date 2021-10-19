@@ -66,8 +66,7 @@ class TranslateService {
                     return
                 }
                 
-                guard let responseJson = try?
-                        JSONDecoder().decode(Translate.self, from: data) else {
+                guard let responseJson = try? JSONDecoder().decode(Translate.self, from: data) else {
                     completion(.failure(.decoding))
                     return
                 }

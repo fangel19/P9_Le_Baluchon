@@ -58,8 +58,7 @@ class CashService {
                     return
                 }
                 
-                guard let responseJson = try?
-                        JSONDecoder().decode(CashInfo.self, from: data) else {
+                guard let responseJson = try? JSONDecoder().decode(CashInfo.self, from: data) else {
                     completionHandler(.failure(.decoding))
                     return
                 }

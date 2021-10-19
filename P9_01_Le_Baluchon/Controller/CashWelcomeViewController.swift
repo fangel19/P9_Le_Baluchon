@@ -84,6 +84,17 @@ class CashWelcomeViewController: UIViewController {
         self.validateButton.isHidden = show
     }
     
+    //Display keyboard
+    @objc func keyboardWillShow(sender: NSNotification) {
+        
+        self.view.frame.origin.y = -100 // Move view 100 points upward
+    }
+    
+    @objc func keyboardWillHide(sender: NSNotification) {
+        
+        self.view.frame.origin.y = 0 // Move view to original position
+    }
+    
     @objc func doneTappedFirstAmount() {
         
         cashPickerViewFalse()
@@ -96,24 +107,13 @@ class CashWelcomeViewController: UIViewController {
         secondAmountCash.resignFirstResponder()
     }
     
-    //Display keyboard
-    @objc func keyboardWillShow(sender: NSNotification) {
-        
-        self.view.frame.origin.y = -100 // Move view 100 points upward
-    }
-    
-    @objc func keyboardWillHide(sender: NSNotification) {
-        
-        self.view.frame.origin.y = 0 // Move view to original position
-    }
-    
     func cashPickerViewFalse() {
         
         let selectedCash = self.secondCashPickerView.selectedRow(inComponent: 0)
         let cashList = self.cashName.keys.sorted()
         guard let list = self.cashName[cashList[selectedCash]] else { return }
         
-        updateCashTwo(to: list, toEuro: false)
+        updateCash(to: list, toEuro: false)
     }
     
     func cashPickerViewTrue() {
@@ -122,10 +122,10 @@ class CashWelcomeViewController: UIViewController {
         let cashList = self.cashName.keys.sorted()
         guard let list = self.cashName[cashList[selectedCash]] else { return }
         
-        updateCashTwo(to: list, toEuro: true)
+        updateCash(to: list, toEuro: true)
     }
     
-    private func updateCashTwo(to: String, toEuro: Bool) {
+    private func updateCash(to: String, toEuro: Bool) {
         
         loadingLayout(isActive: true)
         loadingButton(show: true)
