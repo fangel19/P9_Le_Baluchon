@@ -11,6 +11,7 @@ import XCTest
 class MockNetworkCallsTests: XCTestCase {
     
     var cashService: CashService!
+    var configuration: URLSessionConfiguration!
     
     override func setUp() {
         super.setUp()
@@ -23,7 +24,7 @@ class MockNetworkCallsTests: XCTestCase {
             return (response, data, error)
         }
         
-        let configuration = URLSessionConfiguration.ephemeral
+        configuration = URLSessionConfiguration.ephemeral
         configuration.protocolClasses = [URLTestProtocol.self]
         let session = URLSession(configuration: configuration)
         
@@ -39,12 +40,6 @@ class MockNetworkCallsTests: XCTestCase {
             let data: Data? = nil
             return (response, data, error)
         }
-        
-        let configuration = URLSessionConfiguration.ephemeral
-        configuration.protocolClasses = [URLTestProtocol.self]
-        let session = URLSession(configuration: configuration)
-        
-        cashService  = CashService(cashSession: session)
         
         let expectation  = XCTestExpectation(description: "Wait for queue change.")
         
@@ -72,12 +67,6 @@ class MockNetworkCallsTests: XCTestCase {
             return (response, data, error)
         }
         
-        let configuration = URLSessionConfiguration.ephemeral
-        configuration.protocolClasses = [URLTestProtocol.self]
-        let session = URLSession(configuration: configuration)
-        
-        cashService  = CashService(cashSession: session)
-        
         let expectation  = XCTestExpectation(description: "Wait for queue change.")
         
         cashService.getCash { (result) in
@@ -104,12 +93,6 @@ class MockNetworkCallsTests: XCTestCase {
             return (response, data, error)
         }
         
-        let configuration = URLSessionConfiguration.ephemeral
-        configuration.protocolClasses = [URLTestProtocol.self]
-        let session = URLSession(configuration: configuration)
-        
-        cashService  = CashService(cashSession: session)
-        
         let expectation  = XCTestExpectation(description: "Wait for queue change.")
         
         cashService.getCash { (result) in
@@ -135,12 +118,6 @@ class MockNetworkCallsTests: XCTestCase {
             let data: Data? = FakeResponseData.cashCorrectData
             return (response, data, error)
         }
-        
-        let configuration = URLSessionConfiguration.ephemeral
-        configuration.protocolClasses = [URLTestProtocol.self]
-        let session = URLSession(configuration: configuration)
-        
-        cashService  = CashService(cashSession: session)
         
         let expectation  = XCTestExpectation(description: "Wait for queue change.")
         
